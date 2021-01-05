@@ -1,0 +1,29 @@
+.button__add {
+  width: 150px;
+  height: 50px;
+  background-color: #000;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  cursor: pointer;
+  background: url("../../../images/add-button.svg") center no-repeat;
+  text-decoration: none;
+  box-sizing: border-box;
+    display: inline-block;
+
+}
+
+.button__add:hover {
+  opacity: .6;
+}
+
+.button__add:active {
+  position: relative;
+  top: 1px;
+}
+
+@media screen and (max-width: 320px) {
+  .button__add {
+    width: 282px;
+    margin: 0;
+  }
+}

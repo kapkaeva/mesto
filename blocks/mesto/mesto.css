@@ -1,0 +1,31 @@
+.mesto {
+  list-style-type: none;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 17px;
+  grid-row-gap: 20px;
+  place-content: center;
+  text-align: left;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 320px) {
+  .mesto {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .mesto {
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+}

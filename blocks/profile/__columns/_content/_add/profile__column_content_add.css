@@ -1,0 +1,11 @@
+.profile__column_content_add {
+    max-width: 150px;
+    align-items: center;
+}
+
+@media screen and (max-width: 320px) {
+  .profile__column_content_add {
+    width: 282px;
+    margin: 0;
+  }
+}

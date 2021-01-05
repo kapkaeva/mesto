@@ -1,0 +1,9 @@
+.mesto__image {
+  width: 282px;
+  height: 282px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  display: flex;
+  box-sizing: border-box;
+}
