@@ -1,4 +1,5 @@
 .mesto__item {
+  height: 361px;
   overflow: hidden;
   border-radius: 10px;
   background-color: white;

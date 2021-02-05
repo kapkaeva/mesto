@@ -8,8 +8,7 @@
   background: url("../../../images/add-button.svg") center no-repeat;
   text-decoration: none;
   box-sizing: border-box;
-    display: inline-block;
-
+  display: inline-block;
 }
 
 .button__add:hover {

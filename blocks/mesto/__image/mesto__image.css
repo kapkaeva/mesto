@@ -1,6 +1,8 @@
 .mesto__image {
-  width: 282px;
-  height: 282px;
+  height: auto; 
+  width: 100%; 
+  max-width: 282px; 
+  max-height: 282px;
   background-size: cover;
   background-position: center;
   overflow: hidden;
