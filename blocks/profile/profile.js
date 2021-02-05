@@ -1,10 +1,10 @@
 let popUp = document.querySelector('.popup');
 
-let editButton = document.querySelector('.profile__name_edit');
+let editButton = document.querySelector('.profile__edit-btn');
 let submitButton = document.querySelector('.popup__submit-btn_action_save');
 let closeButton = document.querySelector('.popup__close-btn');
 
-let name = document.querySelector('.profile__name_heading');
+let name = document.querySelector('.profile__heading');
 let description = document.querySelector('.profile__description');
 let nameInput = document.querySelector('.input__text_type_name');
 let jobInput = document.querySelector('.input__text_type_description');
