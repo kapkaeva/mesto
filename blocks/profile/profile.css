@@ -1,16 +1,25 @@
 .profile {
-  max-width: 880px;
   margin: 36px auto;
-  display: flex;
-  position: relative;
   color: white;
   box-sizing: border-box;
   overflow: hidden;
+  width: 100%;
 }
 
-@media screen and (min-width: 320px) and (max-width: 880px) {
+@media screen and (min-width: 320px) and (max-width: 768px) {
   .profile{
     padding-left: 19px;
     padding-right: 19px;
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .profile{
+    padding-left: 19px;
+    padding-right: 19px;
+    max-width: 880px;
+      display: flex;
+
   }
 }

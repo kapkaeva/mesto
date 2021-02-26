@@ -1,11 +1,29 @@
 .mesto__image {
-  height: auto;
-  width: 100%;
-  max-width: 282px;
-  max-height: 282px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
   background-size: cover;
-  background-position: center;
-  overflow: hidden;
-  display: flex;
-  box-sizing: border-box;
+  width: 31vw;
+  height: 31vw;
+  max-width: 100%;
+}
+
+@media screen and (max-width: 425px) {
+  .mesto__image {
+    width: 100vw;
+    height: 100vw;
+  }
+}
+
+@media screen and (min-width: 425px) and (max-width: 800px) {
+  .mesto__image {
+    width: 47vw;
+    height: 47vw;
+  }
+}
+
+@media screen and (min-width: 880px) {
+  .mesto__image {
+    width: 282px;
+    height: 282px;
+  }
 }

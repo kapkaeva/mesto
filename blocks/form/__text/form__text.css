@@ -1,4 +1,4 @@
-.input__text {
+.form__text {
   border: none;
   font-size: 14px;
   line-height: 1.2;
@@ -9,17 +9,14 @@
   box-sizing: border-box;
 }
 
-.input__text::placeholder {
+.form__text::placeholder {
   color: #000;
 }
 
 @media screen and (max-width: 320px) {
-  .input__text {
-    font-size: 14px;
-    line-height: 1.2;
+  .form__text {
     width: 238px;
     height: 40px;
     margin: 8px 22px;
-
   }
 }

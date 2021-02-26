@@ -1,13 +1,14 @@
 .profile__name {
   display: flex;
+  margin: auto;
   flex-flow: row;
   align-items: center;
+  border: 1px solid saddlebrown;
 }
 
-@media screen and (max-width: 320px) {
+/* @media screen and (max-width: 425px) {
   .profile__name{
     margin: auto;
-    padding-top: 23px;
     justify-content: center;
   }
-}
+} */

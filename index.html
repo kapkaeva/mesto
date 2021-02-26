@@ -15,87 +15,85 @@
 
     <main class="content">
       <section class="profile">
-        <div class="profile__columns">
-          <div class="profile__columns profile__avatar">
-            <img class="avatar" src="./images/author.jpg" alt="Profile Image">
-          </div>
-          <div class="profile__columns profile__info">
-            <div class="profile__name">
-              <h1 class="profile__heading">Aida Kapkaeva</h1>
-              <button class="profile__edit-btn"></button>
-            </div>
-            <p class="profile__description">Travel Photographer</p>
-          </div>
-          <div class="profile__columns profile__add">
-            <button class="profile__add-btn"></button>
-          </div>
+        
+        <img class="profile__avatar" src="./images/author.jpg" alt="Profile Image">
+        
+        <div class="profile__info">
+          <!-- <div class="profile__name"> -->
+            <h1 class="profile__heading">Aida Kapkaeva<button class="profile__edit-btn" type="button"></button></h1>
+            
+          <!-- </div> -->
+          <p class="profile__description">Travel Photographer</p>
         </div>
+        
+        <button class="profile__add-btn" type="button"></button>
       </section>
 
-      <div class="popup">
-        <div class = "popup__container">
-          <div class="popup__close-btn">
-          </div>
-          <h3 class="popup__header">Редактировать профиль</h3>
-          <div class="input">
-            <input type="text" placeholder="Имя" class="input__text input__text_type_name">
-            <input type="text" placeholder="Описание" class="input__text input__text_type_description">
-            <button class="popup__submit-btn popup__submit-btn_action_save">
-              Сохранить
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <ul class="mesto">
-        <li class="mesto__item">
-          <img class="mesto__image" src="./images/mesto/f732c0-92fc-4869-9e52-ccfc855e2041.jpg" alt="Union Creek">
-          <div class="mesto__title-wrapper">
-            <h3 class="mesto__title">Union Creek</h3>
-            <button class="mesto__like"></button>
-          </div>
-        </li>
-        <li class="mesto__item">
-          <img class="mesto__image" src="./images/mesto/4a7f23ee-f45f-44bc-92a6-4a88040712544.jpg" alt="Trail">
-          <div class="mesto__title-wrapper">
-            <h3 class="mesto__title">Lovers’ Lane Trail</h3>
-            <button class="mesto__like"></button>
-          </div>
-        </li>
-        <li class="mesto__item">
-          <img class="mesto__image" src="./images/mesto/4a7f23ee-f45f-44bc-92a6-4a88040712541.jpg" alt="Mount Shasta">
-          <div class="mesto__title-wrapper">
-            <h3 class="mesto__title">Mount Shasta</h3>
-            <button class="mesto__like"></button>
-          </div>
-        </li>
-        <li class="mesto__item">
-          <img class="mesto__image" src="./images/mesto/f5547fd2-d3be-49db-874e-32d793eda6722.jpg" alt="Stow Lake">
-          <div class="mesto__title-wrapper">
-            <h3 class="mesto__title">Stow Lake</h3>
-            <button class="mesto__like"></button>
-          </div>
-        </li>
-        <li class="mesto__item">
-          <img class="mesto__image" src="./images/mesto/4a7f23ee-f45f-44bc-92a6-4a88040712542.jpg" alt="Capitol">
-          <div class="mesto__title-wrapper">
-            <h3 class="mesto__title">Capitol Building</h3>
-            <button class="mesto__like"></button>
-          </div>
-        </li>
-        <li class="mesto__item">
-          <img class="mesto__image" src="./images/mesto/f161a9ea-d670-42ee-a77e-7b81d0a03372.jpg" alt="Antenna Tower">
-          <div class="mesto__title-wrapper">
-            <h3 class="mesto__title">TV and radio antenna tower</h3>
-            <button class="mesto__like"></button>
-          </div>
-        </li>
-      </ul>
+      <section class="mesto">
+        <ul class="mesto__grid">
+          <li class="mesto__item">
+            <img class="mesto__image" src="./images/mesto/f732c0-92fc-4869-9e52-ccfc855e2041.jpg" alt="Union Creek">
+            <div class="mesto__title-wrapper">
+              <h2 class="mesto__title">Union Creek</h2>
+              <button class="mesto__like" type="button"></button>
+            </div>
+          </li>
+          <li class="mesto__item">
+            <img class="mesto__image" src="./images/mesto/4a7f23ee-f45f-44bc-92a6-4a88040712544.jpg" alt="Trail">
+            <div class="mesto__title-wrapper">
+              <h2 class="mesto__title">Lovers’ Lane Trail</h2>
+              <button class="mesto__like" type="button"></button>
+            </div>
+          </li>
+          <li class="mesto__item">
+            <img class="mesto__image" src="./images/mesto/4a7f23ee-f45f-44bc-92a6-4a88040712541.jpg" alt="Mount Shasta">
+            <div class="mesto__title-wrapper">
+              <h2 class="mesto__title">Mount Shasta</h2>
+              <button class="mesto__like" type="button"></button>
+            </div>
+          </li>
+          <li class="mesto__item">
+            <img class="mesto__image" src="./images/mesto/f5547fd2-d3be-49db-874e-32d793eda6722.jpg" alt="Stow Lake">
+            <div class="mesto__title-wrapper">
+              <h2 class="mesto__title">Stow Lake</h2>
+              <button class="mesto__like" type="button"></button>
+            </div>
+          </li>
+          <li class="mesto__item">
+            <img class="mesto__image" src="./images/mesto/4a7f23ee-f45f-44bc-92a6-4a88040712542.jpg" alt="Capitol">
+            <div class="mesto__title-wrapper">
+              <h2 class="mesto__title">Capitol Building</h2>
+              <button class="mesto__like" type="button"></button>
+            </div>
+          </li>
+          <li class="mesto__item">
+            <img class="mesto__image" src="./images/mesto/f161a9ea-d670-42ee-a77e-7b81d0a03372.jpg" alt="Antenna Tower">
+            <div class="mesto__title-wrapper">
+              <h2 class="mesto__title">TV and radio antenna tower</h2>
+              <button class="mesto__like" type="button"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
     </main>
 
     <footer class="footer">
       <p class="footer__copyright">© 2021 Mesto Russia</p>
     </footer>
+    <div class="popup">
+      <div class="popup__container">
+        <div class="popup__close-btn">
+        </div>
+        <h3 class="popup__header">Редактировать профиль</h3>
+        <form class="form__edit-profile">
+          <input type="text" placeholder="Имя" class="form__text form__text_type_name">
+          <input type="text" placeholder="Описание" class="form__text form__text_type_description">
+          <button class="popup__submit-btn popup__submit-btn_action_save" type="submit">
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
   <script src="./blocks/profile/profile.js"></script>
 </body>

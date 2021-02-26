@@ -6,8 +6,8 @@ let closeButton = document.querySelector('.popup__close-btn');
 
 let name = document.querySelector('.profile__heading');
 let description = document.querySelector('.profile__description');
-let nameInput = document.querySelector('.input__text_type_name');
-let jobInput = document.querySelector('.input__text_type_description');
+let nameInput = document.querySelector('.form__text_type_name');
+let jobInput = document.querySelector('.form__text_type_description');
 
 
 function editProfileInfo() {

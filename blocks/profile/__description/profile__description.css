@@ -6,13 +6,13 @@
   font-weight: 400;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
+  display: block;
+  border: 1px solid palegreen;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 768px) {
   .profile__description{
     text-align: center;
-    padding-top: 14px;
     padding-bottom: 36px;
     font-size: 14px;
     line-height: 1.2;
