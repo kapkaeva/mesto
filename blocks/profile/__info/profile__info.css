@@ -1,14 +1,9 @@
 .profile__info {
-  border: 1px solid goldenrod;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 800px) {
   .profile__info {
-  }
-}
-
-@media screen and (min-width: 880px) {
-  .profile__info {
-
+    float: left;
+    max-width: 510px;
   }
 }

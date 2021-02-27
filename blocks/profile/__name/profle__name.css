@@ -3,12 +3,11 @@
   margin: auto;
   flex-flow: row;
   align-items: center;
-  border: 1px solid saddlebrown;
 }
 
-/* @media screen and (max-width: 425px) {
-  .profile__name{
-    margin: auto;
+@media screen and (max-width: 800px) {
+  .profile__name {
+    margin: 22px auto 0;
     justify-content: center;
   }
-} */
+}

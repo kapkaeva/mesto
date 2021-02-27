@@ -16,14 +16,14 @@
     <main class="content">
       <section class="profile">
         
-        <img class="profile__avatar" src="./images/author.jpg" alt="Profile Image">
+        <img class="profile__avatar" src="./images/author.jpg" alt="Картинка профиля">
         
         <div class="profile__info">
-          <!-- <div class="profile__name"> -->
-            <h1 class="profile__heading">Aida Kapkaeva<button class="profile__edit-btn" type="button"></button></h1>
-            
-          <!-- </div> -->
-          <p class="profile__description">Travel Photographer</p>
+          <div class="profile__name">
+            <h1 class="profile__heading">Аида Капкаева</h1>
+            <button class="profile__edit-btn" type="button"></button>
+          </div>
+          <p class="profile__description">Фотограф-путешественник</p>
         </div>
         
         <button class="profile__add-btn" type="button"></button>
@@ -80,22 +80,22 @@
     <footer class="footer">
       <p class="footer__copyright">© 2021 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup__closed">
       <div class="popup__container">
         <div class="popup__close-btn">
         </div>
-        <h3 class="popup__header">Редактировать профиль</h3>
-        <form class="form__edit-profile">
-          <input type="text" placeholder="Имя" class="form__text form__text_type_name">
-          <input type="text" placeholder="Описание" class="form__text form__text_type_description">
-          <button class="popup__submit-btn popup__submit-btn_action_save" type="submit">
-            Сохранить
-          </button>
-        </form>
+        <div class="popup__content">
+          <h3 class="popup__header">Редактировать профиль</h3>
+          <form class="form__edit-profile">
+            <input type="text" name="profilename" placeholder="Имя" class="form__text form__text_type_name">
+            <input type="text" name="description" placeholder="Описание" class="form__text form__text_type_description">
+            <input value="Сохранить" class="popup__submit-btn popup__submit-btn_action_save" type="submit">
+          </form>
+        </div>
       </div>
     </div>
   </div>
-  <script src="./blocks/profile/profile.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 
 </html>

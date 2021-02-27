@@ -13,7 +13,7 @@
   color: #000;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 800px) {
   .form__text {
     width: 238px;
     height: 40px;

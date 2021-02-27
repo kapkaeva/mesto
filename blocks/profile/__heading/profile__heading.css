@@ -1,19 +1,26 @@
 .profile__heading {
-  font-size: 42px;
-  line-height: 1;
+  font-size: 27px;
+  line-height: 1.2;
   font-weight: 500;
+  max-width: 540px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  display: inline-block;
-  position: relative;
-  left: 50%; 
-  transform: translateX(-50%);
+  margin: 0 auto;
+  padding-right: 18px;
 }
 
-@media screen and (max-width: 768px) {
-  .profile__heading{
-    font-size: 27px;
-    line-height: 1.2;
+@media screen and (max-width: 800px) {
+  .profile__heading {
+    text-align: center;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .profile__heading {
+    font-size: 42px;
+    text-align: left;
+    vertical-align: middle;
   }
 }
