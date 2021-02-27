@@ -1,6 +1,6 @@
 let popUp = document.querySelector('.popup'); 
 
-let formElement = document.querySelector('.form__edit-profile');
+let formElement = document.querySelector('.form');
 let nameInput = document.querySelector('.form__text_type_name');
 let jobInput = document.querySelector('.form__text_type_description');
 
@@ -18,7 +18,7 @@ function editProfileInfo() {
 }
 
 function closeFormProfileInfoEdit() {
-  popUp.classList.toggle('popup__closed');
+  popUp.classList.toggle('close');
 }
 
 function handleFormProfileSubmit(evt) {
