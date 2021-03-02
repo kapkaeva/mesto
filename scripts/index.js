@@ -12,7 +12,6 @@ let description = document.querySelector('.profile__description');
 
 
 function editProfileInfo() {
-  popUp.classList.remove('popup_close');
   popUp.classList.add('popup_opened');
   nameInput.value = profileName.textContent;
   jobInput.value = description.textContent;
@@ -20,7 +19,6 @@ function editProfileInfo() {
 
 function closeFormProfileInfoEdit() {
   popUp.classList.remove('popup_opened');
-  popUp.classList.add('popup_close');
 }
 
 function handleFormProfileSubmit(evt) {
