@@ -30,50 +30,13 @@
       </section>
 
       <section class="mesto">
-        <ul class="mesto__grid">
-          <li class="mesto__item">
-            <img class="mesto__image" src="./images/mesto/f732c0-92fc-4869-9e52-ccfc855e2041.jpg" alt="Юнион Крик">
-            <div class="mesto__title-wrapper">
-              <h2 class="mesto__title">Юнион Крик</h2>
-              <button class="mesto__like" type="button"></button>
-            </div>
-          </li>
-          <li class="mesto__item">
-            <img class="mesto__image" src="./images/mesto/4a7f23ee-f45f-44bc-92a6-4a88040712544.jpg" alt="Ловерс Лейн Треил">
-            <div class="mesto__title-wrapper">
-              <h2 class="mesto__title">Ловерс Лейн Треил</h2>
-              <button class="mesto__like" type="button"></button>
-            </div>
-          </li>
-          <li class="mesto__item">
-            <img class="mesto__image" src="./images/mesto/4a7f23ee-f45f-44bc-92a6-4a88040712541.jpg" alt="Маунт Шаста">
-            <div class="mesto__title-wrapper">
-              <h2 class="mesto__title">Маунт Шаста</h2>
-              <button class="mesto__like" type="button"></button>
-            </div>
-          </li>
-          <li class="mesto__item">
-            <img class="mesto__image" src="./images/mesto/f5547fd2-d3be-49db-874e-32d793eda6722.jpg" alt="Стоу Лейк">
-            <div class="mesto__title-wrapper">
-              <h2 class="mesto__title">Стоу Лейк</h2>
-              <button class="mesto__like" type="button"></button>
-            </div>
-          </li>
-          <li class="mesto__item">
-            <img class="mesto__image" src="./images/mesto/4a7f23ee-f45f-44bc-92a6-4a88040712542.jpg" alt="Здание Капитолий">
-            <div class="mesto__title-wrapper">
-              <h2 class="mesto__title">Здание Капитолий</h2>
-              <button class="mesto__like" type="button"></button>
-            </div>
-          </li>
-          <li class="mesto__item">
-            <img class="mesto__image" src="./images/mesto/f161a9ea-d670-42ee-a77e-7b81d0a03372.jpg" alt="ТВ и радио антенна тауэр">
-            <div class="mesto__title-wrapper">
-              <h2 class="mesto__title">ТВ и радио антенна тауэр</h2>
-              <button class="mesto__like" type="button"></button>
-            </div>
-          </li>
-        </ul>
+      <ul class="mesto__grid">
+      </ul>
+
+      <div class="mesto__no-items">
+        <p class="mesto__no-items-text">Нет добавленных фото мест</p>
+      </div>
+
       </section>
     </main>
 
@@ -94,6 +57,18 @@
       </div>
     </div>
   </div>
+
+  <template id="mesto__template">
+
+      <li class="mesto__item">
+        <img class="mesto__image" src="" alt="">
+        <div class="mesto__title-wrapper">
+          <h2 class="mesto__title"></h2>
+          <button class="mesto__like" type="button"></button>
+        </div>
+      </li>
+  </template>
+
   <script src="./scripts/index.js"></script>
 </body>
 
