@@ -43,23 +43,36 @@
     <footer class="footer">
       <p class="footer__copyright">© 2021 Mesto Russia</p>
     </footer>
-    <div class="popup">
+
+    <div class="popup" id="popup__edit-profile">
       <div class="popup__container">
         <button class="popup__close-btn" type="button">
         </button>
-          <h3 class="popup__header">Редактировать профиль</h3>
-          <form class="form" name="editprofile">
-            <input type="text" name="profilename" placeholder="Имя" class="form__text form__text_type_name">
-            <input type="text" name="description" placeholder="Описание" class="form__text form__text_type_description">
-            <input value="Сохранить" class="popup__submit-btn popup__submit-btn_action_save" type="submit">
-          </form>
-        
+        <h3 class="popup__header">Редактировать профиль</h3>
+        <form class="form" name="editprofile">
+          <input type="text" name="profilename" placeholder="Имя" class="form__text form__text_type_name">
+          <input type="text" name="description" placeholder="Описание" class="form__text form__text_type_description">
+          <input value="Сохранить" class="popup__submit-btn popup__submit-btn_action_save" type="submit">
+        </form>
       </div>
     </div>
+
+    <div class="popup" id="popup__add-mesto">
+        <div class="popup__container">
+          <button class="popup__close-btn" type="button">
+          </button>
+          <h3 class="popup__header">Новое место</h3>
+          <form class="form" name="addmesto">
+            <input type="text" name="mestotitle" placeholder="Название" class="form__text form__text_type_mesto-title">
+            <input type="text" name="mestolink" placeholder="Ссылка на картинку" class="form__text form__text_type_mesto-link">
+            <input value="Сохранить" class="popup__submit-btn popup__submit-btn_action_save" type="submit">
+          </form>
+        </div>
+    </div>
+
   </div>
 
   <template id="mesto__template">
-
       <li class="mesto__item">
         <img class="mesto__image" src="" alt="">
         <div class="mesto__title-wrapper">

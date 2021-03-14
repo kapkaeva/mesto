@@ -5,11 +5,13 @@ let nameInput = document.querySelector('.form__text_type_name');
 let jobInput = document.querySelector('.form__text_type_description');
 
 let editButton = document.querySelector('.profile__edit-btn');
-let closeButton = document.querySelector('.popup__close-btn');
+let closeButtons = document.querySelectorAll('.popup__close-btn');
 
 let profileName = document.querySelector('.profile__heading');
 let description = document.querySelector('.profile__description');
 
+let addButton = document.querySelector('.profile__add-btn');
+let popupAddMesto = document.getElementById('popup__add-mesto');
 let mestoImage = document.querySelector('mesto__image');
 let mestoTitle = document.querySelector('.mesto__title');
 let noMestoItem = document.querySelector('.mesto__no-items');
@@ -72,19 +74,30 @@ function editProfileInfo() {
   jobInput.value = description.textContent;
 }
 
-function closeFormProfileInfoEdit() {
-  popUp.classList.remove('popup_opened');
+function addMesto() {
+  //console.log('popupAddMesto: ', popupAddMesto);
+  popupAddMesto.classList.add('popup_opened');
+  // nameInput.value = profileName.textContent;
+  // jobInput.value = description.textContent;
+}
+
+function closePopup() {
+  let popUpOpened = document.querySelector('.popup_opened'); 
+  popUpOpened.classList.remove('popup_opened');
 }
 
 function handleFormProfileSubmit(evt) {
   evt.preventDefault(evt)
   profileName.textContent = nameInput.value;
   description.textContent = jobInput.value;
-  closeFormProfileInfoEdit();
+  closePopup();
 }
 
 editButton.addEventListener('click', editProfileInfo);
-closeButton.addEventListener('click', closeFormProfileInfoEdit);
+addButton.addEventListener('click', addMesto);
+
+closeButtons.forEach(button => button.addEventListener('click', closePopup)); 
+
 formElement.addEventListener('submit', handleFormProfileSubmit); 
 
 
