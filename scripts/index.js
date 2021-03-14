@@ -1,6 +1,6 @@
 let popUp = document.querySelector('.popup'); 
 
-let formElement = document.querySelector('.form');
+let btnEditProfile = document.querySelector('[name="editprofile"]');
 let nameInput = document.querySelector('.form__text_type_name');
 let jobInput = document.querySelector('.form__text_type_description');
 
@@ -12,9 +12,16 @@ let description = document.querySelector('.profile__description');
 
 let addButton = document.querySelector('.profile__add-btn');
 let popupAddMesto = document.getElementById('popup__add-mesto');
-let mestoImage = document.querySelector('mesto__image');
-let mestoTitle = document.querySelector('.mesto__title');
+
+const mestoTemplate = document.getElementById('mesto__template').content;
+const mestoGrid = document.querySelector('.mesto__grid');
+
+let mestoImageInput = document.querySelector('.form__text_type_mesto-link');
+let mestoTitleInput = document.querySelector('.form__text_type_mesto-title');
+
 let noMestoItem = document.querySelector('.mesto__no-items');
+let btnAddMesto = document.querySelector('[name="addmesto"]');
+
 
 
 const initialCards = [
@@ -44,16 +51,16 @@ const initialCards = [
   }
 ]; 
 
-function showMestoCards(cards) {
-  const mestoTemplate = document.getElementById('mesto__template').content;
-  const mestoGrid = document.querySelector('.mesto__grid');
-
-  
+function showMestoCards(cards) {  
   cards.forEach(mesto => {
     const mestoElement = mestoTemplate.querySelector('.mesto__item').cloneNode(true);
     mestoElement.querySelector('.mesto__image').src = mesto['link'];
     mestoElement.querySelector('.mesto__image').alt = mesto['name'];
     mestoElement.querySelector('.mesto__title').textContent = mesto['name'];
+    console.log(mestoElement.querySelector('mesto__like'));
+    //mestoElement.querySelector('mesto__like').addEventListener('click', handleLikeButton);
+    let mestoButton = mestoElement.querySelector('.mesto__like')
+    listenLikeCard(mestoButton)
     mestoGrid.append(mestoElement); 
   });
 }
@@ -61,7 +68,6 @@ function showMestoCards(cards) {
 function renderHasMesto() {
   noMestoItem.classList.add('mesto__no-items_hidden');
   showMestoCards(initialCards);
-
 }
 
 function renderNoMesto() {
@@ -75,10 +81,7 @@ function editProfileInfo() {
 }
 
 function addMesto() {
-  //console.log('popupAddMesto: ', popupAddMesto);
   popupAddMesto.classList.add('popup_opened');
-  // nameInput.value = profileName.textContent;
-  // jobInput.value = description.textContent;
 }
 
 function closePopup() {
@@ -93,12 +96,33 @@ function handleFormProfileSubmit(evt) {
   closePopup();
 }
 
+function handleFormMestoSubmit(evt) {
+  evt.preventDefault(evt)
+  const mestoElement = mestoTemplate.querySelector('.mesto__item').cloneNode(true);
+  mestoElement.querySelector('.mesto__image').src = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'; //mestoImageInput.value
+  mestoElement.querySelector('.mesto__image').alt = 'kamchatka'; //mestoTitleInput.value
+  mestoElement.querySelector('.mesto__title').textContent = 'Камчатка'; //mestoTitleInput.value
+  mestoGrid.appendChild(mestoElement);
+  mestoGrid.insertBefore(mestoElement, mestoGrid.childNodes[0]);
+  closePopup();
+}
+
+
+function listenLikeCard(mestoLike) {
+  mestoLike.addEventListener("click", function(element) {
+    if (mestoLike.classList.contains('mesto__like_active')) {
+      mestoLike.classList.remove('mesto__like_active');
+    } else {
+      mestoLike.classList.add('mesto__like_active');
+    }
+  });
+}
+
 editButton.addEventListener('click', editProfileInfo);
 addButton.addEventListener('click', addMesto);
-
 closeButtons.forEach(button => button.addEventListener('click', closePopup)); 
-
-formElement.addEventListener('submit', handleFormProfileSubmit); 
+btnEditProfile.addEventListener('submit', handleFormProfileSubmit); 
+btnAddMesto.addEventListener('submit', handleFormMestoSubmit); 
 
 
 renderHasMesto()
