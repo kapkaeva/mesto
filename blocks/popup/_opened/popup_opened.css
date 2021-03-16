@@ -2,16 +2,5 @@
   display: flex;
   visibility: visible;
   opacity: 1;
-  animation: fade-in 250ms;
+  transition: ease-in 250ms;
 }
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-

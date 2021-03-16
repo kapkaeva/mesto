@@ -90,13 +90,13 @@ function addMesto() {
 
 function openPopup(element) {
   element.classList.add('popup_opened');
-  element.classList.remove('popup_hidden');
+  //element.classList.remove('popup_hidden');
 }
 
 function closePopup(event) {
   let element = event.target.closest('.popup');
   element.classList.remove('popup_opened');
-  element.classList.add('popup_hidden');
+  //element.classList.add('popup_hidden');
 }
 
 function handleFormProfileSubmit(evt) {

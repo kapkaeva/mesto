@@ -23,6 +23,7 @@
   bottom: 0;
   left: 0;
   line-height: 0;
-  visibility: collapse;
+  visibility: hidden;
   opacity: 0;
+  transition: ease-out 250ms;
 }
