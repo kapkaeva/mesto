@@ -1,5 +1,5 @@
 .popup {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, .5);
   z-index: 2;
   cursor: pointer;
   overflow-x: hidden;
@@ -7,7 +7,7 @@
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
-  display: none;
+  opacity: 0;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -moz-box-align: center;
@@ -23,4 +23,7 @@
   right: 0;
   bottom: 0;
   left: 0;
+  line-height: 0;
+  visibility: collapse;
+  opacity: 0;
 }

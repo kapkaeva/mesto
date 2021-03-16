@@ -3,6 +3,7 @@
   height: 24px;
   background-color: #000;
   border: none;
+  outline: none;
   cursor: pointer;
   background: url("../../../images/edit-button.svg") center no-repeat;
   box-sizing: border-box;

@@ -1,4 +1,5 @@
 .form__text {
+  display: block;
   border: none;
   font-size: 14px;
   line-height: 1.2;
