@@ -25,5 +25,5 @@
   line-height: 0;
   visibility: hidden;
   opacity: 0;
-  transition: ease-out 250ms;
+  transition: visibility 0s ease-out 250ms, opacity 250ms;
 }

@@ -1,10 +1,10 @@
 .mesto__no-items {
-	margin: 100px auto 250px;
+  margin: 100px auto 250px;
 }
 
-@media screen and (max-width: 880px){
+@media screen and (max-width: 880px) {
 .mesto__no-items {
-	padding-left: 19px;
-	padding-right: 19px;
-	}
+  padding-left: 19px;
+  padding-right: 19px;
+  }
 }
