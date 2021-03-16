@@ -1,75 +1,122 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Место</title>
-  <link rel="stylesheet" href="./pages/index.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Место</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
 
-<body>
-  <div class="page">
-    <header class="header">
-      <a class="logo link" href="#" target="_self"></a>
-    </header>
+  <body>
+    <div class="page">
+      <header class="header">
+        <a class="logo link" href="#" target="_self"></a>
+      </header>
 
-    <main class="content">
-      <section class="profile">
-        
-        <img class="profile__avatar" src="./images/author.jpg" alt="Картинка профиля">
-        
-        <div class="profile__info">
-          <div class="profile__name">
-            <h1 class="profile__heading">Аида Капкаева</h1>
-            <button class="profile__edit-btn" type="button"></button>
+      <main class="content">
+        <section class="profile">
+          <img
+            class="profile__avatar"
+            src="./images/author.jpg"
+            alt="Картинка профиля"
+          />
+
+          <div class="profile__info">
+            <div class="profile__name">
+              <h1 class="profile__heading">Аида Капкаева</h1>
+              <button class="profile__edit-btn" type="button"></button>
+            </div>
+            <p class="profile__description">Фотограф-путешественник</p>
           </div>
-          <p class="profile__description">Фотограф-путешественник</p>
-        </div>
-        
-        <button class="profile__add-btn" type="button"></button>
-      </section>
 
-      <section class="mesto">
-      <ul class="mesto__grid">
-      </ul>
+          <button class="profile__add-btn" type="button"></button>
+        </section>
 
-      <div class="mesto__no-items">
-        <p class="mesto__no-items-text">Нет добавленных фото мест</p>
-      </div>
+        <section class="mesto">
+          <ul class="mesto__grid"></ul>
 
-      </section>
-    </main>
+          <div class="mesto__no-items">
+            <p class="mesto__no-items-text">Нет добавленных фото мест</p>
+          </div>
+        </section>
+      </main>
 
-    <footer class="footer">
-      <p class="footer__copyright">© 2021 Mesto Russia</p>
-    </footer>
-    <div class="popup">
-      <div class="popup__container">
-        <button class="popup__close-btn" type="button">
-        </button>
+      <footer class="footer">
+        <p class="footer__copyright">© 2021 Mesto Russia</p>
+      </footer>
+
+      <div class="popup" id="popup__edit-profile">
+        <div class="popup__container popup__container_bg">
+          <button class="popup__close-btn" type="button"></button>
           <h3 class="popup__header">Редактировать профиль</h3>
           <form class="form" name="editprofile">
-            <input type="text" name="profilename" placeholder="Имя" class="form__text form__text_type_name">
-            <input type="text" name="description" placeholder="Описание" class="form__text form__text_type_description">
-            <input value="Сохранить" class="popup__submit-btn popup__submit-btn_action_save" type="submit">
+            <input
+              type="text"
+              name="profilename"
+              placeholder="Имя"
+              class="form__text form__text_type_name"
+            />
+            <input
+              type="text"
+              name="description"
+              placeholder="Описание"
+              class="form__text form__text_type_description"
+            />
+            <input
+              value="Сохранить"
+              class="popup__submit-btn popup__submit-btn_edit-profile"
+              type="submit"
+            />
           </form>
-        
+        </div>
+      </div>
+
+      <div class="popup" id="popup__add-mesto">
+        <div class="popup__container popup__container_bg">
+          <button class="popup__close-btn" type="button"></button>
+          <h3 class="popup__header">Новое место</h3>
+          <form class="form" name="addmesto">
+            <input
+              type="text"
+              name="mestotitle"
+              placeholder="Название"
+              class="form__text form__text_type_mesto-title"
+            />
+            <input
+              type="text"
+              name="mestolink"
+              placeholder="Ссылка на картинку"
+              class="form__text form__text_type_mesto-link"
+            />
+            <input
+              value="Сохранить"
+              class="popup__submit-btn popup__submit-btn_add-mesto"
+              type="submit"
+            />
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_bg" id="popup__view-mesto-image">
+        <div class="popup__container">
+          <button class="popup__close-btn" type="button"></button>
+          <img class="popup__image" src="" alt="" />
+          <p class="popup__img-title"></p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <template id="mesto__template">
-
+    <template id="mesto__template">
       <li class="mesto__item">
         <img class="mesto__image" src="" alt="">
+        <button class="mesto__trash" type="button"></button>
         <div class="mesto__title-wrapper">
           <h2 class="mesto__title"></h2>
           <button class="mesto__like" type="button"></button>
         </div>
       </li>
-  </template>
+    </template>
 
-  <script src="./scripts/index.js"></script>
-</body>
-
+    <script src="./scripts/index.js"></script>
+  </body>
 </html>

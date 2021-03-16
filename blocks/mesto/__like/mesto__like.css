@@ -1,5 +1,6 @@
 .mesto__like {
   border: none;
+  outline: none;
   background: url(../../../images/icons/icon-heart.svg) center no-repeat;
   background-size: 100%;
   cursor: pointer;

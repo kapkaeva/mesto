@@ -1,18 +1,21 @@
 .popup__container {
   display: block;
   justify-content: center;
-  width: 430px;
-  height: fit-content;
-  background-color: #fff;
+  min-width: 430px;
+  min-height: fit-content;
   box-shadow: 0px 0px 25px rgb(0, 0, 0, .15);
   border-radius: 10px;
   overflow: visible;
   cursor: default;
-  padding-top: 14px;
+  overflow: visible;
+  position: relative;
+  resize: both;
+  max-height: fit-content;
+  max-width: fit-content;
 }
 
 @media screen and (max-width: 800px) {
   .popup__container {
-    width: 282px;
+    min-width: 240px;
   }
 }

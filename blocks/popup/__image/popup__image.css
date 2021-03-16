@@ -1,0 +1,16 @@
+.popup__image {
+  display: block;
+  justify-content: center;
+  max-width: 75vw;
+  max-height: 75vh;
+  overflow: visible;
+  cursor: default;
+  position: relative;
+}
+
+@media screen and (max-width: 800px) {
+  .popup__image {
+    min-width: 240px;
+    height: auto;
+  }
+}

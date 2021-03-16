@@ -6,21 +6,22 @@
   cursor: pointer;
   display: block;
   float: right;
-  position: relative;
-  top: -62px;
-  left: 52px;
+  position: absolute;
+  color: white;
+  top: -50px;
+  right: -50px;
   border: none;
+  outline: none;
 }
 
 .popup__close-btn:hover {
-  opacity: 0.6;
+  opacity: .6;
 }
 
 @media screen and (max-width: 800px) {
   .popup__close-btn {
-    height: 30px;
-    width: 30px;
-    top: -50px;
-    left: 0px;
+    background-size: 30px 30px;
+    top: -43px;
+    right: -22px;
   }
 }
