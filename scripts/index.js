@@ -1,31 +1,32 @@
-let popupEditPofile = document.getElementById('popup__edit-profile');
+const popupEditPofile = document.getElementById('popup__edit-profile');
 
-let formEditProfile = document.querySelector('[name="editprofile"]');
-let nameInput = document.querySelector('.form__text_type_name');
-let jobInput = document.querySelector('.form__text_type_description');
+const formEditProfile = document.querySelector('[name="editprofile"]');
+const nameInput = document.querySelector('.form__text_type_name');
+const jobInput = document.querySelector('.form__text_type_description');
 
-let editButton = document.querySelector('.profile__edit-btn');
-let closeButtons = document.querySelectorAll('.popup__close-btn');
+const editButton = document.querySelector('.profile__edit-btn');
+const closeButtons = document.querySelectorAll('.popup__close-btn');
 
-let profileName = document.querySelector('.profile__heading');
-let description = document.querySelector('.profile__description');
+const profileName = document.querySelector('.profile__heading');
+const description = document.querySelector('.profile__description');
 
-let addButton = document.querySelector('.profile__add-btn');
-let popupAddMesto = document.getElementById('popup__add-mesto');
+const addButton = document.querySelector('.profile__add-btn');
+const popupAddMesto = document.getElementById('popup__add-mesto');
 
-let popupViewMestoImage = document.getElementById('popup__view-mesto-image');
+const popupViewMestoImage = document.getElementById('popup__view-mesto-image');
 
 const mestoTemplate = document.getElementById('mesto__template').content;
 const mestoGrid = document.querySelector('.mesto__grid');
 
-let mestoImageInput = document.querySelector('.form__text_type_mesto-link');
-let mestoTitleInput = document.querySelector('.form__text_type_mesto-title');
+const mestoImageInput = document.querySelector('.form__text_type_mesto-link');
+const mestoTitleInput = document.querySelector('.form__text_type_mesto-title');
 
-let noMestoItem = document.querySelector('.mesto__no-items');
-let formAddMesto = document.querySelector('[name="addmesto"]');
+const noMestoItem = document.querySelector('.mesto__no-items');
+const formAddMesto = document.querySelector('[name="addmesto"]');
 
-let mestoImage = document.querySelector('.popup__image');
-let mestoTitle = document.querySelector('.popup__img-title');
+const mestoImage = document.querySelector('.popup__image');
+const mestoTitle = document.querySelector('.popup__img-title');
+ 
 
 const initialCards = [
   {
@@ -73,7 +74,7 @@ function addCardItemListeners(mestoElement) {
 function showMestoCards(cards) {
   noMestoItem.classList.add('mesto__no-items_hidden');
   cards.forEach(mesto => {
-    let card = createNewCardItem(mesto['name'], mesto['link']);
+    const card = createNewCardItem(mesto['name'], mesto['link']);
     mestoGrid.append(card);
   });
 }
@@ -93,8 +94,9 @@ function openPopup(element) {
 }
 
 function closePopup(event) {
-  let element = event.target.closest('.popup');
+  const element = event.target.closest('.popup');
   element.classList.remove('popup_opened');
+  noMestoItem.classList.add('mesto__no-items_hidden');
 }
 
 function handleFormProfileSubmit(evt) {
@@ -106,18 +108,14 @@ function handleFormProfileSubmit(evt) {
 
 function handleFormMestoSubmit(evt) {
   evt.preventDefault(evt)
-  let card = createNewCardItem(mestoTitleInput.value, mestoImageInput.value);
+  const card = createNewCardItem(mestoTitleInput.value, mestoImageInput.value);
   mestoGrid.insertBefore(card, mestoGrid.childNodes[0]);
   closePopup(evt);
 }
 
 function listenLikeCard(mestoLike) {
   mestoLike.addEventListener('click', function (element) {
-    if (mestoLike.classList.contains('mesto__like_active')) {
-      mestoLike.classList.remove('mesto__like_active');
-    } else {
-      mestoLike.classList.add('mesto__like_active');
-    }
+    mestoLike.classList.toggle('mesto__like_active') 
   });
 }
 
