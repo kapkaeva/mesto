@@ -55,7 +55,7 @@ const initialCards = [
 ];
 
 
-function newCardItem(name, link) {
+function createNewCardItem(name, link) {
   const mestoElement = mestoTemplate.querySelector('.mesto__item').cloneNode(true);
   mestoElement.querySelector('.mesto__image').src = link;
   mestoElement.querySelector('.mesto__image').alt = name;
@@ -73,7 +73,7 @@ function addCardItemListeners(mestoElement) {
 function showMestoCards(cards) {
   noMestoItem.classList.add('mesto__no-items_hidden');
   cards.forEach(mesto => {
-    let card = newCardItem(mesto['name'], mesto['link']);
+    let card = createNewCardItem(mesto['name'], mesto['link']);
     mestoGrid.append(card);
   });
 }
@@ -108,7 +108,7 @@ function handleFormProfileSubmit(evt) {
 
 function handleFormMestoSubmit(evt) {
   evt.preventDefault(evt)
-  let card = newCardItem(mestoTitleInput.value, mestoImageInput.value);
+  let card = createNewCardItem(mestoTitleInput.value, mestoImageInput.value);
   mestoGrid.insertBefore(card, mestoGrid.childNodes[0]);
   closePopup(evt);
 }
