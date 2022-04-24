@@ -1,4 +1,4 @@
-.popup__submit-btn {
+.popup__button {
   font-size: 18px;
   line-height: 1.2;
   color: white;
@@ -12,12 +12,12 @@
   margin: 37px 36px;
 }
 
-.popup__submit-btn:hover {
+.popup__button:hover {
   opacity: 0.8;
 }
 
 @media screen and (max-width: 800px) {
-  .popup__submit-btn {
+  .popup__button {
     font-size: 14px;
     line-height: 1.2;
     width: 238px;

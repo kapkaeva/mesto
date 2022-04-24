@@ -49,12 +49,12 @@
         <div class="popup__container popup__container_bg">
           <button class="popup__close-btn" type="button"></button>
           <h3 class="popup__header">Редактировать профиль</h3>
-          <form class="form" name="editprofile">
+          <form class="popup__form" name="editprofile">
             <input
               type="text"
               name="profilename"
               placeholder="Имя"
-              class="form__input form__input_type_name"
+              class="popup__input form__input_type_name"
               minlength="2"
               maxlength="40"
               required
@@ -63,14 +63,14 @@
               type="text"
               name="description"
               placeholder="Описание"
-              class="form__input form__input_type_description"
+              class="popup__input form__input_type_description"
               minlength="2"
               maxlength="200"
               required
             />
             <input
               value="Сохранить"
-              class="popup__submit-btn popup__submit-btn_edit-profile"
+              class="popup__button"
               type="submit"
             />
           </form>
@@ -81,12 +81,12 @@
         <div class="popup__container popup__container_bg">
           <button class="popup__close-btn" type="button"></button>
           <h3 class="popup__header">Новое место</h3>
-          <form class="form" name="addmesto">
+          <form class="popup__form" name="addmesto">
             <input
               type="text"
               name="mestotitle"
               placeholder="Название"
-              class="form__input form__input_type_mesto-title"
+              class="popup__input form__input_type_mesto-title"
               minlength="2"
               maxlength="30"
               required
@@ -95,12 +95,12 @@
               type="url"
               name="mestolink"
               placeholder="Ссылка на картинку"
-              class="form__input form__input_type_mesto-link"
+              class="popup__input form__input_type_mesto-link"
               required
             />
             <input
               value="Сохранить"
-              class="popup__submit-btn popup__submit-btn_add-mesto"
+              class="popup__button"
               type="submit"
             />
           </form>
