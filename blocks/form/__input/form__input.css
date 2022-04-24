@@ -1,8 +1,8 @@
-.form__text {
-  font-size: 14px;
-  line-height: 1.2;
+.form__input {
   display: block;
   border: none;
+  font-size: 14px;
+  line-height: 1.2;
   width: 358px;
   height: 42px;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
@@ -10,12 +10,20 @@
   box-sizing: border-box;
 }
 
-.form__text::placeholder {
+.form__input::placeholder {
   color: #000;
 }
 
+.form__input:invalid {
+  border: 1px solid #ff0000;
+}
+
+.form__input:valid {
+  border: 1px solid green;
+}
+
 @media screen and (max-width: 800px) {
-  .form__text {
+  .form__input {
     width: 238px;
     height: 40px;
     margin: 8px 22px;

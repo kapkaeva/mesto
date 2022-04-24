@@ -24,8 +24,9 @@
 @import url(../blocks/popup/__header/popup__header.css);
 @import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
 @import url(../blocks/form/form.css);
+@import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__edit-profile/form__edit-profile.css);
-@import url(../blocks/form/__text/form__text.css);
+/* @import url(../blocks/form/__text/form__text.css); */
 @import url(../blocks/mesto/mesto.css);
 @import url(../blocks/mesto/__grid/mesto__grid.css);
 @import url(../blocks/mesto/__item/mesto__item.css);
