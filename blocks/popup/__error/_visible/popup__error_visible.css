@@ -1,3 +1,12 @@
 .popup__error_visible {
-  opacity: 0;
+  opacity: 1;
+  max-width: 358px;
+}
+
+@media screen and (max-width: 800px) {
+  .popup__error_visible {
+    width: 238px;
+    height: 40px;
+    margin: 5px 0px;
+  }
 }

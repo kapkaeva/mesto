@@ -50,29 +50,39 @@
           <button class="popup__close-btn" type="button"></button>
           <h3 class="popup__header">Редактировать профиль</h3>
           <form class="popup__form" name="editprofile">
-            <input
-              type="text"
-              name="profilename"
-              placeholder="Имя"
-              class="popup__input form__input_type_name"
-              minlength="2"
-              maxlength="40"
-              required
-            />
-            <input
-              type="text"
-              name="description"
-              placeholder="Описание"
-              class="popup__input form__input_type_description"
-              minlength="2"
-              maxlength="200"
-              required
-            />
-            <input
-              value="Сохранить"
-              class="popup__button"
-              type="submit"
-            />
+            <fieldset class="popup__form_set">
+              <label class="popup__form_field">
+                <input
+                  id="name-input"
+                  type="text"
+                  name="profilename"
+                  placeholder="Имя"
+                  class="popup__input"
+                  minlength="2"
+                  maxlength="40"
+                  required
+                />
+                <span class="popup__error name-input-error"></span>
+              </label>
+              <label class="popup__form_field">
+                <input
+                  id="description-input"
+                  type="text"
+                  name="description"
+                  placeholder="Описание"
+                  class="popup__input"
+                  minlength="2"
+                  maxlength="200"
+                  required
+                />
+                <span class="popup__error description-input-error"></span>
+              </label>
+              <input
+                value="Сохранить"
+                class="popup__button"
+                type="submit"
+              />
+            </fieldset>
           </form>
         </div>
       </div>
@@ -82,27 +92,37 @@
           <button class="popup__close-btn" type="button"></button>
           <h3 class="popup__header">Новое место</h3>
           <form class="popup__form" name="addmesto">
-            <input
-              type="text"
-              name="mestotitle"
-              placeholder="Название"
-              class="popup__input form__input_type_mesto-title"
-              minlength="2"
-              maxlength="30"
-              required
-            />
-            <input
-              type="url"
-              name="mestolink"
-              placeholder="Ссылка на картинку"
-              class="popup__input form__input_type_mesto-link"
-              required
-            />
-            <input
-              value="Сохранить"
-              class="popup__button"
-              type="submit"
-            />
+            <fieldset class="popup__form_set">
+              <label class="popup__form_field">
+                <input
+                  id="title-input"
+                  type="text"
+                  name="mestotitle"
+                  placeholder="Название"
+                  class="popup__input"
+                  minlength="2"
+                  maxlength="30"
+                  required
+                />
+                <span class="popup__error title-input-error">sd</span>
+              </label>
+              <label class="popup__form_field">
+                <input
+                  id="link-input"
+                  type="url"
+                  name="mestolink"
+                  placeholder="Ссылка на картинку"
+                  class="popup__input"
+                  required
+                />
+                <span class="popup__error link-input-error">sss</span>
+              </label>
+              <input
+                value="Сохранить"
+                class="popup__button"
+                type="submit"
+              />
+            </fieldset>
           </form>
         </div>
       </div>
