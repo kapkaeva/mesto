@@ -30,19 +30,6 @@ const checkInputValidity = (formElement, inputElement, validationSelector) => {
   }
 };
 
-const setEmptyInputClass = (formElement, inputElement, validationSelector) => {
-  
-};
-
-//дописать функцию переключения стиля инпута
-const checkInputValue = (formElement, inputElement, validationSelector) => {
-  if (inputElement.value) {
-    setEmptyInputClass(formElement, inputElement, validationSelector);
-  } else {
-    removeEmptyInputClass(formElement, inputElement, validationSelector);
-  }
-};
-
 const setEventListeners = (formElement, validationSelector) => {
   const inputList = Array.from(
     formElement.querySelectorAll(validationSelector.inputSelector)
@@ -53,7 +40,6 @@ const setEventListeners = (formElement, validationSelector) => {
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(formElement, inputElement, validationSelector);
-      checkInputValue(formElement, inputElement, validationSelector);
       setButtonState(
         buttonElement,
         validationSelector,

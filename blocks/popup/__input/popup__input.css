@@ -3,6 +3,7 @@
   border: none;
   font-size: 14px;
   line-height: 1.2;
+  color: #000;
   width: 358px;
   height: 42px;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
@@ -15,7 +16,7 @@
 }
 
 .popup__input::placeholder {
-  color: #000;
+  color: rgba(0, 0, 0, .2);
 }
 
 @media screen and (max-width: 800px) {

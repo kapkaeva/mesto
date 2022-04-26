@@ -150,7 +150,6 @@ const listenPopupEvents = () => {
     }
   });
 
-  //removeEventListener("keydown", listener);
   const popupList = Array.from(document.querySelectorAll(".overlay"));
   popupList.forEach((popup) => {
     popup.addEventListener("click", function (evt) {
