@@ -45,11 +45,11 @@
         <p class="footer__copyright">© 2021 Mesto Russia</p>
       </footer>
 
-      <div class="popup" id="popup__edit-profile">
+      <div class="popup popup_overlay" id="popup__edit-profile">
         <div class="popup__container popup__container_bg">
           <button class="popup__close-btn" type="button"></button>
           <h3 class="popup__header">Редактировать профиль</h3>
-          <form class="popup__form" name="editprofile">
+          <form class="popup__form" id="editprofile">
             <fieldset class="popup__form_set">
               <label class="popup__form_field">
                 <input
@@ -79,19 +79,20 @@
               </label>
               <input
                 value="Сохранить"
-                class="popup__button"
+                class="popup__button popup__button_disabled"
                 type="submit"
+                disabled
               />
             </fieldset>
           </form>
         </div>
       </div>
 
-      <div class="popup" id="popup__add-mesto">
+      <div class="popup popup_overlay" id="popup__add-mesto">
         <div class="popup__container popup__container_bg">
           <button class="popup__close-btn" type="button"></button>
           <h3 class="popup__header">Новое место</h3>
-          <form class="popup__form" name="addmesto">
+          <form class="popup__form" id="addmesto">
             <fieldset class="popup__form_set">
               <label class="popup__form_field">
                 <input
@@ -104,7 +105,7 @@
                   maxlength="30"
                   required
                 />
-                <span class="popup__error title-input-error">sd</span>
+                <span class="popup__error title-input-error"></span>
               </label>
               <label class="popup__form_field">
                 <input
@@ -115,19 +116,20 @@
                   class="popup__input"
                   required
                 />
-                <span class="popup__error link-input-error">sss</span>
+                <span class="popup__error link-input-error"></span>
               </label>
               <input
                 value="Сохранить"
-                class="popup__button"
+                class="popup__button popup__button_disabled"
                 type="submit"
+                disabled
               />
             </fieldset>
           </form>
         </div>
       </div>
 
-      <div class="popup popup_bg" id="popup__view-mesto-image">
+      <div class="popup popup_overlay" id="popup__view-mesto-image">
         <div class="popup__container">
           <button class="popup__close-btn" type="button"></button>
           <img class="popup__image" src="https://" alt="text" />
@@ -138,7 +140,7 @@
 
     <template id="mesto__template">
       <li class="mesto__item">
-        <img class="mesto__image" src="https://" alt="text">
+        <img class="mesto__image" src="https://" alt="text" />
         <button class="mesto__trash" type="button"></button>
         <div class="mesto__title-wrapper">
           <h2 class="mesto__title"></h2>
@@ -147,7 +149,7 @@
       </li>
     </template>
 
-    <script src="./scripts/index.js"></script>
     <script src="./scripts/validate.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
