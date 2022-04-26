@@ -96,6 +96,7 @@ function openPopup(element) {
 function closePopup(event) {
   const element = document.querySelector(".popup_opened");
   if (element) {
+    element.querySelector(".popup__form").reset();
     element.classList.remove("popup_opened");
     noMestoItem.classList.add("mesto__no-items_hidden");
   }
@@ -143,15 +144,19 @@ function listenMestoImage(image) {
 }
 
 const listenPopupEvents = () => {
-  const popupList = Array.from(document.querySelectorAll(".popup_overlay"));
   document.addEventListener("keydown", function (event) {
     if (event.code == "Escape") {
       closePopup(event);
     }
   });
+
+  //removeEventListener("keydown", listener);
+  const popupList = Array.from(document.querySelectorAll(".overlay"));
   popupList.forEach((popup) => {
     popup.addEventListener("click", function (evt) {
-      closePopup(evt);
+      if (evt.target.classList.contains("overlay")) {
+        closePopup(evt);
+      }
     });
   });
 };
