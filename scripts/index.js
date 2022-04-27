@@ -72,7 +72,7 @@ function addCardItemListeners(mestoElement) {
 }
 
 function showMestoCards(cards) {
-  noMestoItem.classList.add("mesto__no-items_hidden");
+  noMestoItem.classList.add("hidden");
   cards.forEach((mesto) => {
     const card = createNewCardItem(mesto["name"], mesto["link"]);
     mestoGrid.append(card);
@@ -93,12 +93,12 @@ function openPopup(element) {
   element.classList.add("popup_opened");
 }
 
-function closePopup(event) {
+function closePopup() {
   const element = document.querySelector(".popup_opened");
   if (element) {
     element.querySelector(".popup__form").reset();
     element.classList.remove("popup_opened");
-    noMestoItem.classList.add("mesto__no-items_hidden");
+    noMestoItem.classList.add("hidden");
   }
 }
 
@@ -130,7 +130,7 @@ function listenTrashCard(mestoTrash) {
       mestoTrash.parentNode.remove(mestoTrash);
     }
     if (document.querySelectorAll(".mesto__item").length === 0) {
-      noMestoItem.classList.remove("mesto__no-items_hidden");
+      noMestoItem.classList.remove("hidden");
     }
   });
 }
@@ -149,7 +149,6 @@ const listenPopupEvents = () => {
       closePopup(event);
     }
   });
-
   const popupList = Array.from(document.querySelectorAll(".overlay"));
   popupList.forEach((popup) => {
     popup.addEventListener("click", function (evt) {

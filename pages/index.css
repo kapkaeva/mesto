@@ -4,6 +4,7 @@
 @import url(../blocks/link/link.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/logo/logo.css);
+@import url(../blocks/hidden/hidden.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__columns/profile__columns.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
@@ -35,7 +36,6 @@
 @import url(../blocks/mesto/__item/mesto__item.css);
 @import url(../blocks/mesto/__title/mesto__title.css);
 @import url(../blocks/mesto/__no-items/mesto__no-items.css);
-@import url(../blocks/mesto/__no-items/_hidden/mesto__no-items_hidden.css);
 @import url(../blocks/mesto/__no-items-text/mesto__no-items-text.css);
 @import url(../blocks/mesto/__title-wrapper/mesto__title-wrapper.css);
 @import url(../blocks/mesto/__like/mesto__like.css);
