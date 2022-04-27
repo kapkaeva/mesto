@@ -91,14 +91,22 @@ function addMesto() {
 
 function openPopup(element) {
   element.classList.add("popup_opened");
+  element.querySelector("input,img").focus();
+  addEscKeydownListener(element);
+  addClickEventListener(element);
 }
 
 function closePopup() {
   const element = document.querySelector(".popup_opened");
   if (element) {
-    element.querySelector(".popup__form").reset();
+    const form = element.querySelector(".popup__form");
+    if (form) {
+      form.reset();
+    }
     element.classList.remove("popup_opened");
     noMestoItem.classList.add("hidden");
+    element.removeEventListener("keydown", handleOverlayEscPress);
+    element.removeEventListener("click", handleOverlayClick);
   }
 }
 
@@ -143,21 +151,26 @@ function listenMestoImage(image) {
   });
 }
 
-const listenPopupEvents = () => {
-  document.addEventListener("keydown", function (event) {
-    if (event.code == "Escape") {
-      closePopup(event);
-    }
-  });
-  const popupList = Array.from(document.querySelectorAll(".overlay"));
-  popupList.forEach((popup) => {
-    popup.addEventListener("click", function (evt) {
-      if (evt.target.classList.contains("overlay")) {
-        closePopup(evt);
-      }
-    });
-  });
-};
+function handleOverlayEscPress(event) {
+  if (event.code == "Escape") {
+    event.stopPropagation();
+    closePopup(event);
+  }
+}
+
+function addEscKeydownListener(element) {
+  element.addEventListener("keydown", handleOverlayEscPress);
+}
+
+function handleOverlayClick(event) {
+  if (event.target.classList.contains("overlay")) {
+    closePopup(event);
+  }
+}
+
+function addClickEventListener(element) {
+  element.addEventListener("click", handleOverlayClick);
+}
 
 editButton.addEventListener("click", editProfileInfo);
 addButton.addEventListener("click", addMesto);
@@ -166,4 +179,3 @@ formEditProfile.addEventListener("submit", handleFormProfileSubmit);
 formAddMesto.addEventListener("submit", handleFormMestoSubmit);
 
 showMestoCards(initialCards);
-listenPopupEvents();
