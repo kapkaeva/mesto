@@ -27,33 +27,6 @@ const formAddMesto = document.querySelector('[name="addmesto"]');
 const mestoImage = document.querySelector(".popup__image");
 const mestoTitle = document.querySelector(".popup__img-title");
 
-const initialCards = [
-  {
-    name: "Юнион Крик",
-    link: "./images/mesto/f732c0-92fc-4869-9e52-ccfc855e2041.jpg",
-  },
-  {
-    name: "Ловерс Лейн Треил",
-    link: "./images/mesto/4a7f23ee-f45f-44bc-92a6-4a88040712544.jpg",
-  },
-  {
-    name: "Маунт Шаста",
-    link: "./images/mesto/4a7f23ee-f45f-44bc-92a6-4a88040712541.jpg",
-  },
-  {
-    name: "Стоу Лейк",
-    link: "./images/mesto/f5547fd2-d3be-49db-874e-32d793eda6722.jpg",
-  },
-  {
-    name: "Здание Капитолий",
-    link: "./images/mesto/4a7f23ee-f45f-44bc-92a6-4a88040712542.jpg",
-  },
-  {
-    name: "ТВ и радио антенна тауэр",
-    link: "./images/mesto/f161a9ea-d670-42ee-a77e-7b81d0a03372.jpg",
-  },
-];
-
 function createNewCardItem(name, link) {
   const mestoElement = mestoTemplate
     .querySelector(".mesto__item")
