@@ -114,8 +114,8 @@ function closePopup() {
 
 function handleFormProfileSubmit(evt) {
   evt.preventDefault(evt);
-  profileName.textContent = nameInput.value;
-  description.textContent = jobInput.value;
+  profileName.textContent = evt.target.elements.profilename.value;
+  description.textContent = evt.target.elements.description.value;
   closePopup(evt);
   formEditProfile.reset();
 }
