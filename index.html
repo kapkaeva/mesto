@@ -44,11 +44,11 @@
       <footer class="footer">
         <p class="footer__copyright">© 2021 Mesto Russia</p>
       </footer>
-        <div class="popup overlay" id="popup__edit-profile">
+        <div class="popup overlay" name="popupeditprofile">
         <div class="popup__container popup__container_bg">
           <button class="popup__close-btn" type="button"></button>
           <h3 class="popup__header">Редактировать профиль</h3>
-          <form class="popup__form" id="editprofile">
+          <form class="popup__form" name="editprofile">
             <fieldset class="popup__form-set">
               <label class="popup__form-field">
                 <input
@@ -56,7 +56,7 @@
                   type="text"
                   name="profilename"
                   placeholder="Имя"
-                  class="popup__input"
+                  class="popup__input popup__input-name"
                   minlength="2"
                   maxlength="40"
                   required
@@ -69,7 +69,7 @@
                   type="text"
                   name="description"
                   placeholder="Описание"
-                  class="popup__input"
+                  class="popup__input popup__input-description"
                   minlength="2"
                   maxlength="200"
                   required
@@ -87,11 +87,11 @@
         </div>
         </div>
 
-      <div class="popup overlay" id="popup__add-mesto">
+      <div class="popup overlay" name="popupaddmesto">
         <div class="popup__container popup__container_bg">
           <button class="popup__close-btn" type="button"></button>
           <h3 class="popup__header">Новое место</h3>
-          <form class="popup__form" id="addmesto">
+          <form class="popup__form" name="addmesto">
             <fieldset class="popup__form-set">
               <label class="popup__form-field">
                 <input
@@ -128,7 +128,7 @@
         </div>
       </div>
 
-      <div class="popup overlay" id="popup__view-mesto-image">
+      <div class="popup overlay" name="viewmestoimage">
         <div class="popup__container">
           <button class="popup__close-btn" type="button"></button>
           <img class="popup__image" src="https://" alt="text" />

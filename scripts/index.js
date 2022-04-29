@@ -1,8 +1,8 @@
-const popupEditPofile = document.getElementById("popup__edit-profile");
+const popupEditPofile = document.querySelector('[name="popupeditprofile"]');
 
-const formEditProfile = document.getElementById("editprofile");
-const nameInput = document.getElementById("name-input");
-const jobInput = document.getElementById("description-input");
+const formEditProfile = document.querySelector('[name="editprofile"]');
+const nameInput = document.querySelector(".popup__input-name");
+const jobInput = document.querySelector(".popup__input-description");
 
 const buttonEditProfile = document.querySelector(".profile__edit-btn");
 const closeButtons = document.querySelectorAll(".popup__close-btn");
@@ -11,18 +11,18 @@ const profileName = document.querySelector(".profile__heading");
 const description = document.querySelector(".profile__description");
 
 const buttonAddMestoButton = document.querySelector(".profile__add-btn");
-const popupAddMesto = document.getElementById("popup__add-mesto");
+const popupAddMesto = document.querySelector('[name="popupaddmesto"]');
 
-const popupViewMestoImage = document.getElementById("popup__view-mesto-image");
+const popupViewMestoImage = document.querySelector('[name="viewmestoimage"]');
 
-const mestoTemplate = document.getElementById("mesto__template").content;
+const mestoTemplate = document.querySelector("#mesto__template").content;
 const mestoGrid = document.querySelector(".mesto__grid");
 
-const mestoImageInput = document.getElementById("link-input");
-const mestoTitleInput = document.getElementById("title-input");
+const mestoImageInput = document.querySelector(".link-input");
+const mestoTitleInput = document.querySelector(".title-input");
 
 const noMestoItem = document.querySelector(".mesto__no-items");
-const formAddMesto = document.getElementById("addmesto");
+const formAddMesto = document.querySelector('[name="addmesto"]'); 
 
 const mestoImage = document.querySelector(".popup__image");
 const mestoTitle = document.querySelector(".popup__img-title");
