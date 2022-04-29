@@ -148,6 +148,9 @@ function listenTrashCard(mestoTrash) {
 function listenMestoImage(image) {
   image.addEventListener("click", function (element) {
     openPopup(popupViewMestoImage);
+    document
+      .querySelector("[name=viewmestoimage]")
+      .classList.add("overlay__image");
     mestoImage.src = element.target.src;
     mestoImage.alt = element.target.alt;
     mestoTitle.textContent = element.target.alt;

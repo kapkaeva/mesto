@@ -6,7 +6,5 @@
 @media screen and (max-width: 800px) {
   .popup__error_visible {
     width: 238px;
-    height: 40px;
-    margin: 5px 0px;
   }
 }

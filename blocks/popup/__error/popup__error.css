@@ -2,12 +2,6 @@
   color: #FF0000;
   font-size: 12px;
   line-height: 15px;
-  height: 32px;
-  width: 358px;
-}
-
-@media screen and (max-width: 800px) {
-  .popup__error {
-    width: 238px;
-  }
+  margin: 5px 0 0;
+  width: 100%;
 }
