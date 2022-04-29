@@ -147,9 +147,10 @@ function listenTrashCard(mestoTrash) {
 
 function listenMestoImage(image) {
   image.addEventListener("click", function (element) {
-    mestoImage.src = element.target.src;
-    mestoTitle.textContent = element.target.alt;
     openPopup(popupViewMestoImage);
+    mestoImage.src = element.target.src;
+    mestoImage.alt = element.target.alt;
+    mestoTitle.textContent = element.target.alt;
   });
 }
 
