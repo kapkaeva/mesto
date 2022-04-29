@@ -4,13 +4,13 @@ const formEditProfile = document.getElementById("editprofile");
 const nameInput = document.getElementById("name-input");
 const jobInput = document.getElementById("description-input");
 
-const editButton = document.querySelector(".profile__edit-btn");
+const buttonEditProfile = document.querySelector(".profile__edit-btn");
 const closeButtons = document.querySelectorAll(".popup__close-btn");
 
 const profileName = document.querySelector(".profile__heading");
 const description = document.querySelector(".profile__description");
 
-const addButton = document.querySelector(".profile__add-btn");
+const buttonAddMestoButton = document.querySelector(".profile__add-btn");
 const popupAddMesto = document.getElementById("popup__add-mesto");
 
 const popupViewMestoImage = document.getElementById("popup__view-mesto-image");
@@ -58,9 +58,11 @@ function createNewCardItem(name, link) {
   const mestoElement = mestoTemplate
     .querySelector(".mesto__item")
     .cloneNode(true);
-  mestoElement.querySelector(".mesto__image").src = link;
-  mestoElement.querySelector(".mesto__image").alt = name;
-  mestoElement.querySelector(".mesto__title").textContent = name;
+  const mestoCardImage = mestoElement.querySelector(".mesto__image");
+  const mestoCardTitle = mestoElement.querySelector(".mesto__title");
+  mestoCardImage.src = link;
+  mestoCardImage.alt = name;
+  mestoCardTitle.textContent = name;
   addCardItemListeners(mestoElement);
   return mestoElement;
 }
@@ -80,9 +82,9 @@ function showMestoCards(cards) {
 }
 
 function editProfileInfo() {
-  openPopup(popupEditPofile);
   nameInput.value = profileName.textContent;
   jobInput.value = description.textContent;
+  openPopup(popupEditPofile);
 }
 
 function addMesto() {
@@ -127,13 +129,13 @@ function handleFormMestoSubmit(evt) {
 }
 
 function listenLikeCard(mestoLike) {
-  mestoLike.addEventListener("click", function (element) {
+  mestoLike.addEventListener("click", function (event) {
     mestoLike.classList.toggle("mesto__like_active");
   });
 }
 
 function listenTrashCard(mestoTrash) {
-  mestoTrash.addEventListener("click", function (element) {
+  mestoTrash.addEventListener("click", function (event) {
     if (mestoTrash.parentNode) {
       mestoTrash.parentNode.remove(mestoTrash);
     }
@@ -145,9 +147,9 @@ function listenTrashCard(mestoTrash) {
 
 function listenMestoImage(image) {
   image.addEventListener("click", function (element) {
-    openPopup(popupViewMestoImage);
     mestoImage.src = element.target.src;
     mestoTitle.textContent = element.target.alt;
+    openPopup(popupViewMestoImage);
   });
 }
 
@@ -172,8 +174,8 @@ function addClickEventListener(element) {
   element.addEventListener("click", handleOverlayClick);
 }
 
-editButton.addEventListener("click", editProfileInfo);
-addButton.addEventListener("click", addMesto);
+buttonEditProfile.addEventListener("click", editProfileInfo);
+buttonAddMestoButton.addEventListener("click", addMesto);
 closeButtons.forEach((button) => button.addEventListener("click", closePopup));
 formEditProfile.addEventListener("submit", handleFormProfileSubmit);
 formAddMesto.addEventListener("submit", handleFormMestoSubmit);
