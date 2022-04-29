@@ -1,4 +1,5 @@
 .mesto__like_active {
   opacity: 1;
   background: url(../../../../images/icons/icon-heart-active.svg) center no-repeat;
+  background-size: 100%;
 }

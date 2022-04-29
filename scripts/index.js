@@ -18,8 +18,8 @@ const popupViewMestoImage = document.querySelector('[name="viewmestoimage"]');
 const mestoTemplate = document.querySelector("#mesto__template").content;
 const mestoGrid = document.querySelector(".mesto__grid");
 
-const mestoImageInput = document.querySelector(".link-input");
-const mestoTitleInput = document.querySelector(".title-input");
+const mestoImageInput = document.querySelector("#link-input");
+const mestoTitleInput = document.querySelector("#title-input");
 
 const noMestoItem = document.querySelector(".mesto__no-items");
 const formAddMesto = document.querySelector('[name="addmesto"]'); 
@@ -122,8 +122,11 @@ function handleFormProfileSubmit(evt) {
 
 function handleFormMestoSubmit(evt) {
   evt.preventDefault(evt);
-  const card = createNewCardItem(mestoTitleInput.value, mestoImageInput.value);
-  mestoGrid.insertBefore(card, mestoGrid.childNodes[0]);
+  const card = createNewCardItem(
+    evt.target.elements.mestotitle.value,
+    evt.target.elements.mestolink.value
+  );
+  mestoGrid.prepend(card);
   closePopup(evt);
   formAddMesto.reset();
 }
