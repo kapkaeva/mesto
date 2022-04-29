@@ -128,17 +128,15 @@ function handleFormMestoSubmit(evt) {
   formAddMesto.reset();
 }
 
-function listenLikeCard(mestoLike) {
-  mestoLike.addEventListener("click", function (event) {
-    mestoLike.classList.toggle("mesto__like_active");
+function listenLikeCard(event) {
+  event.addEventListener("click", function (element) {
+    element.target.classList.toggle("mesto__like_active");
   });
 }
 
-function listenTrashCard(mestoTrash) {
-  mestoTrash.addEventListener("click", function (event) {
-    if (mestoTrash.parentNode) {
-      mestoTrash.parentNode.remove(mestoTrash);
-    }
+function listenTrashCard(event) {
+  event.addEventListener("click", function (element) {
+    element.target.closest(".mesto__item").remove();
     if (document.querySelectorAll(".mesto__item").length === 0) {
       noMestoItem.classList.remove("hidden");
     }
