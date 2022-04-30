@@ -49,7 +49,7 @@ function addCardItemListeners(mestoElement) {
 function showMestoCards(cards) {
   noMestoItem.classList.add("hidden");
   cards.forEach((mesto) => {
-    const card = createNewCardItem(mesto["name"], mesto["link"]);
+    const card = createNewCardItem(mesto.name, mesto.link);
     mestoGrid.append(card);
   });
 }
@@ -80,7 +80,7 @@ function closePopup() {
     }
     element.classList.remove("popup_opened");
     noMestoItem.classList.add("hidden");
-    element.removeEventListener("keydown", handleOverlayEscPress);
+    document.removeEventListener("keydown", handleOverlayEscPress);
     element.removeEventListener("click", handleOverlayClick);
   }
 }
@@ -139,7 +139,7 @@ function handleOverlayEscPress(event) {
 }
 
 function addEscKeydownListener(element) {
-  element.addEventListener("keydown", handleOverlayEscPress);
+  document.addEventListener("keydown", handleOverlayEscPress);
 }
 
 function handleOverlayClick(event) {
