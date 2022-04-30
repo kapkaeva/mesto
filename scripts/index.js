@@ -15,7 +15,7 @@ const popupAddMesto = document.querySelector('[name="popupaddmesto"]');
 
 const popupViewMestoImage = document.querySelector('[name="viewmestoimage"]');
 
-const mestoTemplate = document.querySelector("#mesto__template").content;
+const cardTemplate = document.querySelector("#card-template").content;
 const mestoGrid = document.querySelector(".mesto__grid");
 
 const mestoImageInput = document.querySelector("#link-input");
@@ -28,29 +28,29 @@ const mestoImage = document.querySelector(".popup__image");
 const mestoTitle = document.querySelector(".popup__img-title");
 
 function createNewCardItem(name, link) {
-  const mestoElement = mestoTemplate
-    .querySelector(".mesto__item")
+  const card = cardTemplate
+    .querySelector(".card")
     .cloneNode(true);
-  const mestoCardImage = mestoElement.querySelector(".mesto__image");
-  const mestoCardTitle = mestoElement.querySelector(".mesto__title");
-  mestoCardImage.src = link;
-  mestoCardImage.alt = name;
-  mestoCardTitle.textContent = name;
-  addCardItemListeners(mestoElement);
-  return mestoElement;
+  const cardImage = card.querySelector(".card__image");
+  const cardTitle = card.querySelector(".card__title");
+  cardImage.src = link;
+  cardImage.alt = name;
+  cardTitle.textContent = name;
+  addCardItemListeners(card);
+  return card;
 }
 
-function addCardItemListeners(mestoElement) {
-  listenLikeCard(mestoElement.querySelector(".mesto__like"));
-  listenTrashCard(mestoElement.querySelector(".mesto__trash"));
-  listenMestoImage(mestoElement.querySelector(".mesto__image"));
+function addCardItemListeners(card) {
+  listenLikeCard(card.querySelector(".card__like-button"));
+  listenTrashCard(card.querySelector(".card__delete-button"));
+  listenMestoImage(card.querySelector(".card__image"));
 }
 
 function showMestoCards(cards) {
   noMestoItem.classList.add("hidden");
-  cards.forEach((mesto) => {
-    const card = createNewCardItem(mesto.name, mesto.link);
-    mestoGrid.append(card);
+  cards.forEach((card) => {
+    const newCard = createNewCardItem(card.name, card.link);
+    mestoGrid.append(newCard);
   });
 }
 
@@ -106,14 +106,14 @@ function handleFormMestoSubmit(evt) {
 
 function listenLikeCard(event) {
   event.addEventListener("click", function (element) {
-    element.target.classList.toggle("mesto__like_active");
+    element.target.classList.toggle("card__like-button_active");
   });
 }
 
 function listenTrashCard(event) {
   event.addEventListener("click", function (element) {
-    element.target.closest(".mesto__item").remove();
-    if (document.querySelectorAll(".mesto__item").length === 0) {
+    element.target.closest(".card").remove();
+    if (document.querySelectorAll(".card").length === 0) {
       noMestoItem.classList.remove("hidden");
     }
   });

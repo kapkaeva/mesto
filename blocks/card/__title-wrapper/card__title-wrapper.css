@@ -1,4 +1,4 @@
-.mesto__title-wrapper {
+.card__title-wrapper {
   display: flex;
   flex-flow: row;
   justify-content: space-between;

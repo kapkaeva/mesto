@@ -1,4 +1,4 @@
-.mesto__like {
+.card__like-button {
   border: none;
   outline: none;
   background: url(../../../images/icons/icon-heart.svg) center no-repeat;
@@ -9,7 +9,7 @@
   transition: 0.3s;
 }
 
-.mesto__like:hover {
+.card__like-button:hover {
   opacity: .5;
   transition: opacity .2s linear;
 }

@@ -1,4 +1,4 @@
-.mesto__trash {
+.card__delete-button {
   border: none;
   outline: none;
   background: url("../../../images/icons/icon-trash.svg") center no-repeat;
@@ -15,7 +15,7 @@
   fill: rgb(128, 111, 111);
 }
 
-.mesto__trash:hover {
+.card__delete-button:hover {
   opacity: .6;
   transition: opacity .2s linear;
 }

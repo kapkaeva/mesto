@@ -1,4 +1,4 @@
-.mesto__image {
+.card__image {
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
@@ -8,22 +8,22 @@
 }
 
 @media screen and (max-width: 425px) {
-  .mesto__image {
+  .card__image {
     width: 100vw;
     height: 100vw;
   }
 }
 
 @media screen and (min-width: 425px) and (max-width: 800px) {
-  .mesto__image {
+  .card__image {
     width: 47vw;
     height: 47vw;
   }
 }
 
 @media screen and (min-width: 880px) {
-  .mesto__image {
+  .card__image {
     width: 282px;
     height: 282px;
-  }
+    }
 }
