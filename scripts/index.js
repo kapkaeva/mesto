@@ -1,6 +1,6 @@
-const popupEditPofile = document.querySelector('[name="popupeditprofile"]');
+const popupEditPofile = document.querySelector('[name="popupEditProfile"]');
 
-const formEditProfile = document.querySelector('[name="editprofile"]');
+const formEditProfile = document.querySelector('[name="editProfile"]');
 const nameInput = document.querySelector(".popup__input-name");
 const jobInput = document.querySelector(".popup__input-description");
 
@@ -11,9 +11,9 @@ const profileName = document.querySelector(".profile__heading");
 const description = document.querySelector(".profile__description");
 
 const buttonAddMestoButton = document.querySelector(".profile__add-btn");
-const popupAddMesto = document.querySelector('[name="popupaddmesto"]');
+const popupAddMesto = document.querySelector('[name="popupAddMesto"]');
 
-const popupViewMestoImage = document.querySelector('[name="viewmestoimage"]');
+const popupViewMestoImage = document.querySelector('[name="viewMestoImage"]');
 
 const cardTemplate = document.querySelector("#card-template").content;
 const mestoGrid = document.querySelector(".mesto__grid");
@@ -22,7 +22,7 @@ const mestoImageInput = document.querySelector("#link-input");
 const mestoTitleInput = document.querySelector("#title-input");
 
 const noMestoItem = document.querySelector(".mesto__no-items");
-const formAddMesto = document.querySelector('[name="addmesto"]'); 
+const formAddMesto = document.querySelector('[name="addMesto"]'); 
 
 const mestoImage = document.querySelector(".popup__image");
 const mestoTitle = document.querySelector(".popup__img-title");
@@ -87,7 +87,7 @@ function closePopup() {
 
 function handleFormProfileSubmit(evt) {
   evt.preventDefault(evt);
-  profileName.textContent = evt.target.elements.profilename.value;
+  profileName.textContent = evt.target.elements.profileName.value;
   description.textContent = evt.target.elements.description.value;
   closePopup(evt);
   formEditProfile.reset();
@@ -96,8 +96,8 @@ function handleFormProfileSubmit(evt) {
 function handleFormMestoSubmit(evt) {
   evt.preventDefault(evt);
   const card = createNewCardItem(
-    evt.target.elements.mestotitle.value,
-    evt.target.elements.mestolink.value
+    evt.target.elements.mestoTitle.value,
+    evt.target.elements.mestoLink.value
   );
   mestoGrid.prepend(card);
   closePopup(evt);
@@ -123,7 +123,7 @@ function listenMestoImage(image) {
   image.addEventListener("click", function (element) {
     openPopup(popupViewMestoImage);
     document
-      .querySelector("[name=viewmestoimage]")
+      .querySelector("[name=viewMestoImage]")
       .classList.add("overlay__image");
     mestoImage.src = element.target.src;
     mestoImage.alt = element.target.alt;
