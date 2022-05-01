@@ -22,34 +22,53 @@ const mestoImageInput = document.querySelector("#link-input");
 const mestoTitleInput = document.querySelector("#title-input");
 
 const noMestoItem = document.querySelector(".mesto__no-items");
-const formAddMesto = document.querySelector('[name="addMesto"]'); 
+const formAddMesto = document.querySelector('[name="addMesto"]');
 
 const mestoImage = document.querySelector(".popup__image");
 const mestoTitle = document.querySelector(".popup__img-title");
 
-function createNewCardItem(name, link) {
-  const card = cardTemplate
-    .querySelector(".card")
-    .cloneNode(true);
+function createNewCardItem(data) {
+  const card = cardTemplate.querySelector(".card").cloneNode(true);
   const cardImage = card.querySelector(".card__image");
   const cardTitle = card.querySelector(".card__title");
-  cardImage.src = link;
-  cardImage.alt = name;
-  cardTitle.textContent = name;
+  cardImage.src = data.link;
+  cardImage.alt = data.name;
+  cardTitle.textContent = data.name;
   addCardItemListeners(card);
   return card;
 }
 
 function addCardItemListeners(card) {
-  listenLikeCard(card.querySelector(".card__like-button"));
-  listenTrashCard(card.querySelector(".card__delete-button"));
-  listenMestoImage(card.querySelector(".card__image"));
+  card
+    .querySelector(".card__like-button")
+    .addEventListener("click", function (element) {
+      element.target.classList.toggle("card__like-button_active");
+    });
+  card
+    .querySelector(".card__delete-button")
+    .addEventListener("click", function (element) {
+      element.target.closest(".card").remove();
+      if (document.querySelectorAll(".card").length === 0) {
+        noMestoItem.classList.remove("hidden");
+      }
+    });
+  card
+    .querySelector(".card__image")
+    .addEventListener("click", function (element) {
+      openPopup(popupViewMestoImage);
+      document
+        .querySelector("[name=viewMestoImage]")
+        .classList.add("overlay__image");
+      mestoImage.src = element.target.src;
+      mestoImage.alt = element.target.alt;
+      mestoTitle.textContent = element.target.alt;
+    });
 }
 
 function showMestoCards(cards) {
   noMestoItem.classList.add("hidden");
   cards.forEach((card) => {
-    const newCard = createNewCardItem(card.name, card.link);
+    const newCard = createNewCardItem(card);
     mestoGrid.append(newCard);
   });
 }
@@ -66,9 +85,10 @@ function addMesto() {
 
 function openPopup(element) {
   element.classList.add("popup_opened");
-  element.querySelector("input,img").focus();
-  addEscKeydownListener(element);
-  addClickEventListener(element);
+  const inputElement = element.querySelector("input");
+  if (inputElement) inputElement.focus();
+  element.addEventListener("click", handleOverlayClick);
+  document.addEventListener("keydown", handleOverlayEscPress);
 }
 
 function closePopup() {
@@ -95,40 +115,13 @@ function handleFormProfileSubmit(evt) {
 
 function handleFormMestoSubmit(evt) {
   evt.preventDefault(evt);
-  const card = createNewCardItem(
-    evt.target.elements.mestoTitle.value,
-    evt.target.elements.mestoLink.value
-  );
+  const card = createNewCardItem({
+    name: evt.target.elements.mestoTitle.value,
+    link: evt.target.elements.mestoLink.value,
+  });
   mestoGrid.prepend(card);
   closePopup(evt);
   formAddMesto.reset();
-}
-
-function listenLikeCard(event) {
-  event.addEventListener("click", function (element) {
-    element.target.classList.toggle("card__like-button_active");
-  });
-}
-
-function listenTrashCard(event) {
-  event.addEventListener("click", function (element) {
-    element.target.closest(".card").remove();
-    if (document.querySelectorAll(".card").length === 0) {
-      noMestoItem.classList.remove("hidden");
-    }
-  });
-}
-
-function listenMestoImage(image) {
-  image.addEventListener("click", function (element) {
-    openPopup(popupViewMestoImage);
-    document
-      .querySelector("[name=viewMestoImage]")
-      .classList.add("overlay__image");
-    mestoImage.src = element.target.src;
-    mestoImage.alt = element.target.alt;
-    mestoTitle.textContent = element.target.alt;
-  });
 }
 
 function handleOverlayEscPress(event) {
@@ -138,18 +131,10 @@ function handleOverlayEscPress(event) {
   }
 }
 
-function addEscKeydownListener(element) {
-  document.addEventListener("keydown", handleOverlayEscPress);
-}
-
 function handleOverlayClick(event) {
   if (event.target.classList.contains("overlay")) {
     closePopup(event);
   }
-}
-
-function addClickEventListener(element) {
-  element.addEventListener("click", handleOverlayClick);
 }
 
 buttonEditProfile.addEventListener("click", editProfileInfo);

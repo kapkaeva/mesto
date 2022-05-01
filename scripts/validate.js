@@ -1,5 +1,3 @@
-//enableValidation;
-
 const validationConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -77,7 +75,6 @@ const setButtonState = (buttonElement, validationConfig, disabled) => {
 };
 
 function enableValidation(validationConfig) {
-  document.querySelectorAll(validationConfig.formSelector);
   const formList = Array.from(
     document.querySelectorAll(validationConfig.formSelector)
   );
