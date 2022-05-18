@@ -7,10 +7,9 @@ class Card {
   _getTemplate() {
     document.querySelector("#card-template").content;
     const cardElement = document
-    .querySelector("#card-template")
-    .content
-    .querySelector(".card")
-    .cloneNode(true);
+      .querySelector("#card-template")
+      .content.querySelector(".card")
+      .cloneNode(true);
 
     return cardElement;
   }
@@ -25,6 +24,49 @@ class Card {
     return this._element;
   }
 
+  _setEventListeners() {
+    this._element
+      .querySelector(".card__like-button")
+      .addEventListener("click", () => {
+        this._handleToggleLike();
+      });
+    
+    this._element
+      .querySelector(".card__delete-button")
+      .addEventListener("click", () => {
+        this._handleDelete();
+      });
+
+    this._element
+      .querySelector(".card__image")
+      .addEventListener("click", () => {
+        this._handleImageClick(); 
+      });
+
+  }
+
+  _handleToggleLike() {
+    this._element
+      .querySelector(".card__like-button")
+      .classList.toggle("card__like-button_active");
+  }
+
+  _handleDelete() {
+    this._element
+      .querySelector(".card__delete-button")
+      .closest(".card").remove();
+  }
+
+  _handleImageClick() {
+    //     openPopup(popupViewMestoImage);
+    // document
+    //   .querySelector("[name=viewMestoImage]")
+    //   .classList.add("overlay__image");
+    // mestoImage.src = evt.target.src;
+    // mestoImage.alt = evt.target.alt;
+    // mestoTitle.textContent = evt.target.alt;
+  }
+  
 }
 
 initialCards.forEach((item) => {
