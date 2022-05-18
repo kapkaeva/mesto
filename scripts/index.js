@@ -41,27 +41,27 @@ function createNewCardItem(data) {
 function addCardItemListeners(card) {
   card
     .querySelector(".card__like-button")
-    .addEventListener("click", function (element) {
-      element.target.classList.toggle("card__like-button_active");
+    .addEventListener("click", function (evt) {
+      evt.target.classList.toggle("card__like-button_active");
     });
   card
     .querySelector(".card__delete-button")
-    .addEventListener("click", function (element) {
-      element.target.closest(".card").remove();
+    .addEventListener("click", function (evt) {
+      evt.target.closest(".card").remove();
       if (document.querySelectorAll(".card").length === 0) {
         noMestoItem.classList.remove("hidden");
       }
     });
   card
     .querySelector(".card__image")
-    .addEventListener("click", function (element) {
+    .addEventListener("click", function (evt) {
       openPopup(popupViewMestoImage);
       document
         .querySelector("[name=viewMestoImage]")
         .classList.add("overlay__image");
-      mestoImage.src = element.target.src;
-      mestoImage.alt = element.target.alt;
-      mestoTitle.textContent = element.target.alt;
+      mestoImage.src = evt.target.src;
+      mestoImage.alt = evt.target.alt;
+      mestoTitle.textContent = evt.target.alt;
     });
 }
 
