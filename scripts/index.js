@@ -1,3 +1,6 @@
+import { initialCards } from "./cards.js";
+import Card from "./Card.js";
+
 const popupEditPofile = document.querySelector('[name="popupEditProfile"]');
 
 const formEditProfile = document.querySelector('[name="editProfile"]');
@@ -27,51 +30,49 @@ const formAddMesto = document.querySelector('[name="addMesto"]');
 const mestoImage = document.querySelector(".popup__image");
 const mestoTitle = document.querySelector(".popup__img-title");
 
-function createNewCardItem(data) {
-  const card = cardTemplate.querySelector(".card").cloneNode(true);
-  const cardImage = card.querySelector(".card__image");
-  const cardTitle = card.querySelector(".card__title");
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
-  cardTitle.textContent = data.name;
-  addCardItemListeners(card);
-  return card;
-}
+// function createNewCardItem(data) {
+//   const card = cardTemplate.querySelector(".card").cloneNode(true);
+//   const cardImage = card.querySelector(".card__image");
+//   const cardTitle = card.querySelector(".card__title");
+//   cardImage.src = data.link;
+//   cardImage.alt = data.name;
+//   cardTitle.textContent = data.name;
+//   addCardItemListeners(card);
+//   return card;
+// }
 
-function addCardItemListeners(card) {
-  card
-    .querySelector(".card__like-button")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("card__like-button_active");
-    });
-  card
-    .querySelector(".card__delete-button")
-    .addEventListener("click", function (evt) {
-      evt.target.closest(".card").remove();
-      if (document.querySelectorAll(".card").length === 0) {
-        noMestoItem.classList.remove("hidden");
-      }
-    });
-  card
-    .querySelector(".card__image")
-    .addEventListener("click", function (evt) {
-      openPopup(popupViewMestoImage);
-      document
-        .querySelector("[name=viewMestoImage]")
-        .classList.add("overlay__image");
-      mestoImage.src = evt.target.src;
-      mestoImage.alt = evt.target.alt;
-      mestoTitle.textContent = evt.target.alt;
-    });
-}
+// function addCardItemListeners(card) {
+//   card
+//     .querySelector(".card__like-button")
+//     .addEventListener("click", function (evt) {
+//       evt.target.classList.toggle("card__like-button_active");
+//     });
+//   card
+//     .querySelector(".card__delete-button")
+//     .addEventListener("click", function (evt) {
+//       evt.target.closest(".card").remove();
+//       if (document.querySelectorAll(".card").length === 0) {
+//         noMestoItem.classList.remove("hidden");
+//       }
+//     });
+//   card.querySelector(".card__image").addEventListener("click", function (evt) {
+//     openPopup(popupViewMestoImage);
+//     document
+//       .querySelector("[name=viewMestoImage]")
+//       .classList.add("overlay__image");
+//     mestoImage.src = evt.target.src;
+//     mestoImage.alt = evt.target.alt;
+//     mestoTitle.textContent = evt.target.alt;
+//   });
+// }
 
-function showMestoCards(cards) {
-  noMestoItem.classList.add("hidden");
-  cards.forEach((card) => {
-    const newCard = createNewCardItem(card);
-    mestoGrid.append(newCard);
-  });
-}
+// function showMestoCards(cards) {
+//   noMestoItem.classList.add("hidden");
+//   cards.forEach((card) => {
+//     const newCard = createNewCardItem(card);
+//     mestoGrid.append(newCard);
+//   });
+// }
 
 function editProfileInfo() {
   nameInput.value = profileName.textContent;
@@ -83,27 +84,27 @@ function addMesto() {
   openPopup(popupAddMesto);
 }
 
-function openPopup(element) {
-  element.classList.add("popup_opened");
-  const inputElement = element.querySelector("input");
-  if (inputElement) inputElement.focus();
-  element.addEventListener("click", handleOverlayClick);
-  document.addEventListener("keydown", handleOverlayEscPress);
-}
+// function openPopup(element) {
+//   element.classList.add("popup_opened");
+//   const inputElement = element.querySelector("input");
+//   if (inputElement) inputElement.focus();
+//   element.addEventListener("click", handleOverlayClick);
+//   document.addEventListener("keydown", handleOverlayEscPress);
+// }
 
-function closePopup() {
-  const element = document.querySelector(".popup_opened");
-  if (element) {
-    const form = element.querySelector(".popup__form");
-    if (form) {
-      form.reset();
-    }
-    element.classList.remove("popup_opened");
-    noMestoItem.classList.add("hidden");
-    document.removeEventListener("keydown", handleOverlayEscPress);
-    element.removeEventListener("click", handleOverlayClick);
-  }
-}
+// function closePopup() {
+//   const element = document.querySelector(".popup_opened");
+//   if (element) {
+//     const form = element.querySelector(".popup__form");
+//     if (form) {
+//       form.reset();
+//     }
+//     element.classList.remove("popup_opened");
+//     noMestoItem.classList.add("hidden");
+//     document.removeEventListener("keydown", handleOverlayEscPress);
+//     element.removeEventListener("click", handleOverlayClick);
+//   }
+// }
 
 function handleFormProfileSubmit(evt) {
   evt.preventDefault(evt);
@@ -124,23 +125,30 @@ function handleFormMestoSubmit(evt) {
   formAddMesto.reset();
 }
 
-function handleOverlayEscPress(event) {
-  if (event.code == "Escape") {
-    event.stopPropagation();
-    closePopup(event);
-  }
-}
+// function handleOverlayEscPress(event) {
+//   if (event.code == "Escape") {
+//     event.stopPropagation();
+//     closePopup(event);
+//   }
+// }
 
-function handleOverlayClick(event) {
-  if (event.target.classList.contains("overlay")) {
-    closePopup(event);
-  }
-}
+// function handleOverlayClick(event) {
+//   if (event.target.classList.contains("overlay")) {
+//     closePopup(event);
+//   }
+//}
+
+initialCards.forEach((item) => {
+  const card = new Card(item);
+  const cardElement = card.generateCard();
+
+  mestoGrid.append(cardElement);
+});
 
 buttonEditProfile.addEventListener("click", editProfileInfo);
 buttonAddMestoButton.addEventListener("click", addMesto);
-closeButtons.forEach((button) => button.addEventListener("click", closePopup));
+//closeButtons.forEach((button) => button.addEventListener("click", closePopup));
 formEditProfile.addEventListener("submit", handleFormProfileSubmit);
 formAddMesto.addEventListener("submit", handleFormMestoSubmit);
 
-showMestoCards(initialCards);
+//showMestoCards(initialCards);

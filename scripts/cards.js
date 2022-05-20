@@ -24,3 +24,5 @@ const initialCards = [
     link: "./images/mesto/f161a9ea-d670-42ee-a77e-7b81d0a03372.jpg",
   },
 ];
+
+export { initialCards }; 
