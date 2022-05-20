@@ -1,6 +1,9 @@
+import { initialCards } from "./config.js";
+
 const popupImage = document.querySelector(".popup__image");
 const popupTitle = document.querySelector(".popup__img-title");
 const popupContainer = document.querySelector('[name="viewMestoImage"]');
+const content = document.querySelector(".mesto__grid");
 
 export default class Card {
   constructor(data) {
@@ -95,8 +98,15 @@ export default class Card {
 
   _handleImageClick(evt) {
     this._handleOpenPopup();
-    this_link.src = evt.target.src;
-    this_link.alt = evt.target.alt;
-    this_name.textContent = evt.target.alt;
+    this._link.src = evt.target.src;
+    this._link.alt = evt.target.alt;
+    this._name.textContent = evt.target.alt;
   }
 }
+
+initialCards.forEach((item) => {
+  const card = new Card(item);
+  const cardElement = card.generateCard();
+
+  content.append(cardElement);
+});
