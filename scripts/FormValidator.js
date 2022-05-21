@@ -6,15 +6,13 @@ export default class FormValidator {
     this._inputErrorClass = data.inputErrorClass;
     this._errorClass = data.errorClass;
     this._formSelector = formSelector;
-  }
-
-  _setButtonState() {
-    console.log("_setButtonState");
-    const buttonElement = this._formSelector.querySelector(
+    this._buttonElement = this._formSelector.querySelector(
       this._submitButtonSelector
     );
-    console.log("buttonElement", buttonElement);
-    if (buttonElement.disabled) {
+  }
+
+  _setButtonState(buttonElement, disabled) {
+    if (disabled) {
       buttonElement.setAttribute("disabled", true);
       buttonElement.classList.add(this._inactiveButtonClass);
     } else {
@@ -28,13 +26,13 @@ export default class FormValidator {
     const inputList = Array.from(
       this._formSelector.querySelectorAll(this._inputSelector)
     );
-    const buttonElement = this._formSelector.querySelector(
-      this._submitButtonSelector
-    );
     inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
-        this._setButtonState(buttonElement, this._hasInvalidInput(inputList));
+        this._setButtonState(
+          this._buttonElement,
+          this._hasInvalidInput(inputList)
+        );
       });
     });
   }
@@ -55,7 +53,7 @@ export default class FormValidator {
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClass);
     errorElement.textContent = "";
-  };
+  }
 
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
@@ -76,7 +74,7 @@ export default class FormValidator {
   }
 
   enableValidation() {
-    this._setButtonState();
+    this._setButtonState(this._buttonElement, true);
     this._formSelector.addEventListener("submit", (evt) => {
       this._handleButton(evt);
     });
@@ -84,6 +82,3 @@ export default class FormValidator {
     this._setEventListeners(this._formSelector, this._inactiveButtonClass);
   }
 }
-
-
-

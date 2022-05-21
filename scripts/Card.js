@@ -1,7 +1,6 @@
 import { initialCards } from "./config.js";
 
 const popupImage = document.querySelector(".popup__image");
-const popupTitle = document.querySelector(".popup__img-title");
 const popupContainer = document.querySelector('[name="viewMestoImage"]');
 const content = document.querySelector(".mesto__grid");
 
