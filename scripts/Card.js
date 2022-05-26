@@ -1,6 +1,7 @@
 import { initialCards } from "./config.js";
 
 const popupImage = document.querySelector(".popup__image");
+const popupImageTitle = document.querySelector(".popup__img-title");
 const popupContainer = document.querySelector('[name="viewMestoImage"]');
 const content = document.querySelector(".mesto__grid");
 
@@ -42,7 +43,9 @@ export default class Card {
       this._handleOverlayEscPress(evt);
     });
 
-    popupImage.src = this._image;
+    popupImage.src = this._link;
+    popupImage.alt = this._name;
+    popupImageTitle.textContent = this._name;
   }
 
   _handleClosePopup() {
@@ -78,7 +81,7 @@ export default class Card {
     this._element
       .querySelector(".card__image")
       .addEventListener("click", (evt) => {
-        this._handleImageClick(evt);
+        this._handleOpenPopup();
       });
   }
 
@@ -93,13 +96,6 @@ export default class Card {
       .querySelector(".card__delete-button")
       .closest(".card")
       .remove();
-  }
-
-  _handleImageClick(evt) {
-    this._handleOpenPopup();
-    this._link.src = evt.target.src;
-    this._link.alt = evt.target.alt;
-    this._name.textContent = evt.target.alt;
   }
 }
 
