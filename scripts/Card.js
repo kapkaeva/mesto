@@ -4,6 +4,7 @@ const popupImage = document.querySelector(".popup__image");
 const popupImageTitle = document.querySelector(".popup__img-title");
 const popupContainer = document.querySelector('[name="viewMestoImage"]');
 const content = document.querySelector(".mesto__grid");
+const noItems = document.querySelector(".mesto__no-items");
 
 export default class Card {
   constructor(data) {
@@ -96,12 +97,20 @@ export default class Card {
       .querySelector(".card__delete-button")
       .closest(".card")
       .remove();
+    this._showNoItems();
+  }
+
+  _showNoItems() {
+    let cardsCount = content.querySelectorAll(".card").length;
+    let anyCards = cardsCount > 0;
+    noItems.hidden = anyCards;
   }
 }
 
 initialCards.forEach((item) => {
   const card = new Card(item);
   const cardElement = card.generateCard();
-
   content.append(cardElement);
 });
+
+noItems.hidden = true;

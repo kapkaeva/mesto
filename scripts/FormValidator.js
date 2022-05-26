@@ -22,7 +22,6 @@ export default class FormValidator {
   }
 
   _setEventListeners() {
-    console.log("formElement, validationConfig");
     const inputList = Array.from(
       this._formSelector.querySelectorAll(this._inputSelector)
     );
