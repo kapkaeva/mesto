@@ -30,22 +30,12 @@ const cardTemplate = document
   .content.querySelector(".card");
 
 function editProfileInfo() {
-  const form = new FormValidator(
-    validationConfig,
-    document.querySelector('[name="editProfile"]')
-  );
-  form.enableValidation();
   nameInput.value = profileName.textContent;
   jobInput.value = description.textContent;
   openPopup(editPofileForm);
 }
 
 function addMesto() {
-  const form = new FormValidator(
-    validationConfig,
-    document.querySelector('[name="addMesto"]')
-  );
-  form.enableValidation();
   openPopup(addMestoForm);
 }
 
@@ -77,6 +67,11 @@ function generateCard(cardData, cardTemplate) {
 initialCards.forEach((item) => {
   const card = new Card(item, cardTemplate).generateCard();
   content.append(card);
+});
+
+[formEditProfile, formAddMesto].forEach((formSelector) => {
+  const validator = new FormValidator(validationConfig, formSelector);
+  validator.enableValidation();
 });
 
 buttonEditProfile.addEventListener("click", editProfileInfo);
