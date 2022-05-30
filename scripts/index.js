@@ -65,7 +65,7 @@ function generateCard(cardData, cardTemplate) {
 }
 
 initialCards.forEach((item) => {
-  const card = new Card(item, cardTemplate).generateCard();
+  const card = generateCard(item, cardTemplate);
   content.append(card);
 });
 
