@@ -1,7 +1,7 @@
 import Card from "./Card.js";
-import { validationConfig } from "./config.js";
+import { initialCards, validationConfig } from "./config.js";
 import FormValidator from "./FormValidator.js";
-import Popup from "./Popup.js";
+import { closePopup, openPopup } from "./popupHandlers.js";
 
 const formEditProfile = document.querySelector('[name="editProfile"]');
 const nameInput = document.querySelector(".popup__input-name");
@@ -19,13 +19,15 @@ const mestoGrid = document.querySelector(".mesto__grid");
 
 const formAddMesto = document.querySelector('[name="addMesto"]');
 
-const popupAddMesto = new Popup(
-  document.querySelector('[name="popupAddMesto"]')
-);
+const addMestoForm = document.querySelector('[name="popupAddMesto"]');
 
-const popupEditPofile = new Popup(
-  document.querySelector('[name="popupEditProfile"]')
-);
+const editPofileForm = document.querySelector('[name="popupEditProfile"]');
+
+const content = document.querySelector(".mesto__grid");
+
+const cardTemplate = document
+  .querySelector("#card-template")
+  .content.querySelector(".card");
 
 function editProfileInfo() {
   const form = new FormValidator(
@@ -35,7 +37,7 @@ function editProfileInfo() {
   form.enableValidation();
   nameInput.value = profileName.textContent;
   jobInput.value = description.textContent;
-  popupEditPofile.open();
+  openPopup(editPofileForm);
 }
 
 function addMesto() {
@@ -44,33 +46,38 @@ function addMesto() {
     document.querySelector('[name="addMesto"]')
   );
   form.enableValidation();
-  popupAddMesto.open();
-}
-
-function closePopup() {
-  const element = document.querySelector(".popup_opened");
-  new Popup(element).close();
+  openPopup(addMestoForm);
 }
 
 function handleFormProfileSubmit(evt) {
   evt.preventDefault(evt);
   profileName.textContent = evt.target.elements.profileName.value;
   description.textContent = evt.target.elements.description.value;
-  closePopup(evt);
+  closePopup();
   formEditProfile.reset();
 }
 
 function handleFormMestoSubmit(evt) {
   evt.preventDefault(evt);
-
-  const card = new Card({
+  const cardData = {
     name: evt.target.elements.mestoTitle.value,
     link: evt.target.elements.mestoLink.value,
-  }).generateCard();
+  };
+  const card = generateCard(cardData, cardTemplate);
   mestoGrid.prepend(card);
-  closePopup(evt);
+  closePopup();
   formAddMesto.reset();
 }
+
+function generateCard(cardData, cardTemplate) {
+  const card = new Card(cardData, cardTemplate);
+  return card.generateCard();
+}
+
+initialCards.forEach((item) => {
+  const card = new Card(item, cardTemplate).generateCard();
+  content.append(card);
+});
 
 buttonEditProfile.addEventListener("click", editProfileInfo);
 buttonAddMestoButton.addEventListener("click", addMesto);
