@@ -16,18 +16,8 @@ function handleOverlayEscPress(event) {
   }
 }
 
-function handleOverlayClick(event) {
-  if (event.target.classList.contains("overlay")) {
-    event.stopPropagation();
-    closePopup();
-  }
-}
-
 function openPopup(element) {
   element.classList.add("popup_opened");
-  const inputElement = element.querySelector("input");
-  if (inputElement) inputElement.focus();
-  element.addEventListener("click", handleOverlayClick);
   document.addEventListener("keydown", handleOverlayEscPress);
 }
 
@@ -38,14 +28,27 @@ function findActive() {
 function closePopup() {
   const element = findActive();
   if (element) {
-    const form = element.querySelector(".popup__form");
-    if (form) {
-      form.reset();
-    }
     document.removeEventListener("keydown", handleOverlayEscPress);
-    element.removeEventListener("click", handleOverlayClick);
     element.classList.remove("popup_opened");
   }
 }
 
-export { handleOpenPopup, closePopup, openPopup };
+function handleOverlayClick(event) {
+  if (event.target.classList.contains("overlay")) {
+    event.stopPropagation();
+    closePopup();
+  }
+}
+
+function initOverlayClickEventListeners(elements) {
+  elements.forEach((element) => {
+    element.addEventListener("click", handleOverlayClick);
+  });
+}
+
+export {
+  handleOpenPopup,
+  closePopup,
+  openPopup,
+  initOverlayClickEventListeners,
+};

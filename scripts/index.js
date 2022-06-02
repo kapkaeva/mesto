@@ -1,7 +1,11 @@
 import Card from "./Card.js";
 import { initialCards, validationConfig } from "./config.js";
 import FormValidator from "./FormValidator.js";
-import { closePopup, openPopup } from "./popupHandlers.js";
+import {
+  closePopup,
+  openPopup,
+  initOverlayClickEventListeners,
+} from "./popupHandlers.js";
 
 const formEditProfile = document.querySelector('[name="editProfile"]');
 const nameInput = document.querySelector(".popup__input-name");
@@ -23,6 +27,8 @@ const addMestoForm = document.querySelector('[name="popupAddMesto"]');
 
 const editPofileForm = document.querySelector('[name="popupEditProfile"]');
 
+const viewMestoImage = document.querySelector('[name="viewMestoImage"]');
+
 const content = document.querySelector(".mesto__grid");
 
 const cardTemplate = document
@@ -39,12 +45,19 @@ function addMesto() {
   openPopup(addMestoForm);
 }
 
+function formStateReset(form) {
+  form.reset();
+  const submitBtn = form.querySelector(validationConfig.submitButtonSelector);
+  submitBtn.setAttribute("disabled", true);
+  submitBtn.classList.add(validationConfig.inactiveButtonClass);
+}
+
 function handleFormProfileSubmit(evt) {
   evt.preventDefault(evt);
   profileName.textContent = evt.target.elements.profileName.value;
   description.textContent = evt.target.elements.description.value;
   closePopup();
-  formEditProfile.reset();
+  formStateReset(formEditProfile);
 }
 
 function handleFormMestoSubmit(evt) {
@@ -56,7 +69,7 @@ function handleFormMestoSubmit(evt) {
   const card = generateCard(cardData, cardTemplate);
   mestoGrid.prepend(card);
   closePopup();
-  formAddMesto.reset();
+  formStateReset(formAddMesto);
 }
 
 function generateCard(cardData, cardTemplate) {
@@ -73,6 +86,8 @@ initialCards.forEach((item) => {
   const validator = new FormValidator(validationConfig, formSelector);
   validator.enableValidation();
 });
+
+initOverlayClickEventListeners([addMestoForm, editPofileForm, viewMestoImage]);
 
 buttonEditProfile.addEventListener("click", editProfileInfo);
 buttonAddMestoButton.addEventListener("click", addMesto);
