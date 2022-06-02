@@ -42,9 +42,7 @@ export default class Card {
   }
 
   _handleDelete() {
-    this._element
-      .querySelector(".card__delete-button")
-      .closest(".card")
-      .remove();
+    this._element.remove();
+    this._element = null;
   }
 }
