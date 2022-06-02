@@ -11,13 +11,13 @@ export default class FormValidator {
     );
   }
 
-  _setButtonState(buttonElement, disabled) {
+  _setButtonState(disabled) {
     if (disabled) {
-      buttonElement.setAttribute("disabled", true);
-      buttonElement.classList.add(this._inactiveButtonClass);
+      this._buttonElement.setAttribute("disabled", true);
+      this._buttonElement.classList.add(this._inactiveButtonClass);
     } else {
-      buttonElement.removeAttribute("disabled");
-      buttonElement.classList.remove(this._inactiveButtonClass);
+      this._buttonElement.removeAttribute("disabled");
+      this._buttonElement.classList.remove(this._inactiveButtonClass);
     }
   }
 
@@ -29,7 +29,7 @@ export default class FormValidator {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
         this._setButtonState(
-          this._buttonElement,
+          this._this._buttonElement,
           this._hasInvalidInput(inputList)
         );
       });
