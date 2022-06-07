@@ -31,6 +31,15 @@ const viewMestoImage = document.querySelector('[name="viewMestoImage"]');
 
 const content = document.querySelector(".mesto__grid");
 
+const editProfileValidator = new FormValidator(
+  validationConfig,
+  formEditProfile
+);
+editProfileValidator.enableValidation();
+
+const addMestoValidator = new FormValidator(validationConfig, formAddMesto);
+addMestoValidator.enableValidation();
+
 const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card");
@@ -45,19 +54,13 @@ function addMesto() {
   openPopup(addMestoForm);
 }
 
-function formStateReset(form) {
-  form.reset();
-  const submitBtn = form.querySelector(validationConfig.submitButtonSelector);
-  submitBtn.setAttribute("disabled", true);
-  submitBtn.classList.add(validationConfig.inactiveButtonClass);
-}
-
 function handleFormProfileSubmit(evt) {
   evt.preventDefault(evt);
   profileName.textContent = evt.target.elements.profileName.value;
   description.textContent = evt.target.elements.description.value;
   closePopup();
-  formStateReset(formEditProfile);
+  formEditProfile.reset();
+  editProfileValidator.disableActionBtn();
 }
 
 function handleFormMestoSubmit(evt) {
@@ -69,7 +72,8 @@ function handleFormMestoSubmit(evt) {
   const card = generateCard(cardData, cardTemplate);
   mestoGrid.prepend(card);
   closePopup();
-  formStateReset(formAddMesto);
+  formAddMesto.reset();
+  addMestoValidator.disableActionBtn();
 }
 
 function generateCard(cardData, cardTemplate) {
@@ -80,11 +84,6 @@ function generateCard(cardData, cardTemplate) {
 initialCards.forEach((item) => {
   const card = generateCard(item, cardTemplate);
   content.append(card);
-});
-
-[formEditProfile, formAddMesto].forEach((formSelector) => {
-  const validator = new FormValidator(validationConfig, formSelector);
-  validator.enableValidation();
 });
 
 initOverlayClickEventListeners([addMestoForm, editPofileForm, viewMestoImage]);
