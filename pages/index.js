@@ -84,12 +84,11 @@ const cardList = new Section(
     items: initialCards,
     renderer: (cardItem) => {
       const card = new Card(
-        { cardItem, 
-          handleCardClick: () => {}
-          //  (link, name) => {
-          //   const popup = new PopupWithImage(link, name);
-          //   //card.PopupWithImage(link, name);
-          // } 
+        {
+          data: cardItem,
+          handleCardClick: (link, name) => {
+            new PopupWithImage(`[name="viewMestoImage"]`, link, name).open();
+          },
         },
         cardTemplate
       );
@@ -102,7 +101,7 @@ const cardList = new Section(
 
 cardList.renderItems();
 
-initOverlayClickEventListeners([addMestoForm, editPofileForm, viewMestoImage]);
+//initOverlayClickEventListeners([addMestoForm, editPofileForm, viewMestoImage]);
 
 buttonEditProfile.addEventListener("click", editProfileInfo);
 buttonAddMestoButton.addEventListener("click", addMesto);

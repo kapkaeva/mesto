@@ -1,4 +1,4 @@
-import { handleOpenPopup } from "./popupHandlers.js";
+//import { handleOpenPopup } from "./popupHandlers.js";
 
 export default class Card {
   constructor({ data, handleCardClick }, cardElement) {
