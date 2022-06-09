@@ -8,19 +8,34 @@ export default class Popup {
     const inputElement = this._element.querySelector("input");
     if (inputElement) inputElement.focus();
     this._element.addEventListener("click", () => {
-      this._handleOverlayEscPress;
+      this._handleEscClose;
     });
     document.addEventListener("keydown", () => {
-      this._handleOverlayEscPress;
+      this._handleEscClose;
     });
   }
 
-  _handleOverlayEscPress(event) {
+  close() {
+    const element = this._findActive();
+    if (element) {
+      element.classList.remove("popup_opened");
+      document.removeEventListener("keydown", () => {
+        this._handleEscClose;
+      });
+      element.removeEventListener("click", () => {
+        this._handleOverlayClick;
+      });
+    }
+  }
+
+  _handleEscClose(event) {
     if (event.code == "Escape") {
       event.stopPropagation();
       closePopup(event);
     }
   }
+
+  setEventListeners() {}
 
   _handleOverlayClick(event) {
     if (event.target.classList.contains("overlay")) {
@@ -30,18 +45,5 @@ export default class Popup {
 
   _findActive() {
     return document.querySelector(".popup_opened");
-  }
-
-  close() {
-    const element = this._findActive();
-    if (element) {
-      element.classList.remove("popup_opened");
-      document.removeEventListener("keydown", () => {
-        this._handleOverlayEscPress;
-      });
-      element.removeEventListener("click", () => {
-        this._handleOverlayClick;
-      });
-    }
   }
 }

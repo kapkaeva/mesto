@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     name: "Юнион Крик",
     link: "./images/mesto/f732c0-92fc-4869-9e52-ccfc855e2041.jpg",
@@ -25,7 +25,7 @@ const initialCards = [
   },
 ];
 
-const validationConfig = {
+export const validationConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
@@ -34,4 +34,22 @@ const validationConfig = {
   errorClass: "popup__error_visible",
 };
 
-export { initialCards, validationConfig };
+export const userConfig = {
+  profileName: ".profile__heading",
+  description: ".profile__description",
+};
+
+export const cardTemplate = document
+  .querySelector("#card-template")
+  .content.querySelector(".card");
+
+export const buttonEditProfile = document.querySelector(".profile__edit-btn");
+export const buttonAddMestoButton = document.querySelector(".profile__add-btn");
+export const closeButtons = document.querySelectorAll(".popup__close-btn");
+export const formEditProfile = document.querySelector('[name="editProfile"]');
+export const formAddMesto = document.querySelector('[name="addMesto"]');
+export const addMestoForm = document.querySelector('[name="popupAddMesto"]');
+export const editPofileForm = document.querySelector(
+  '[name="popupEditProfile"]'
+);
+export const viewMestoImage = document.querySelector('[name="viewMestoImage"]');
