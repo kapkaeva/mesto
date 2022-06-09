@@ -1,9 +1,9 @@
-import Section from "../components/Section.js";
-import Card from "../components/Card.js";
-import FormValidator from "../components/FormValidator.js";
-import PopupWithForm from "../components/PopupWithForm.js";
-import PopupWithImage from "../components/PopupWithImage.js";
-import UserInfo from "../components/UserInfo.js";
+import Section from "../src/components/Section.js";
+import Card from "../src/components/Card.js";
+import FormValidator from "../src/components/FormValidator.js";
+import PopupWithForm from "../src/components/PopupWithForm.js";
+import PopupWithImage from "../src/components/PopupWithImage.js";
+import UserInfo from "../src/components/UserInfo.js";
 
 import {
   initialCards,
@@ -15,15 +15,15 @@ import {
   closeButtons,
   formEditProfile,
   formAddMesto,
-  addMestoForm,
-  editPofileForm,
-  viewMestoImage,
-} from "../utils/constants.js";
+  // addMestoForm,
+  // editPofileForm,
+  // viewMestoImage,
+} from "../src/utils/constants.js";
 import {
   closePopup,
   openPopup,
   initOverlayClickEventListeners,
-} from "../components/popupHandlers.js";
+} from "../src/components/popupHandlers.js";
 
 const nameInput = document.querySelector(".popup__input-name");
 const jobInput = document.querySelector(".popup__input-description");
@@ -47,11 +47,12 @@ addMestoValidator.enableValidation();
 function editProfileInfo() {
   nameInput.value = userInfo.getUserInfo().name;
   jobInput.value = userInfo.getUserInfo().description;
-  openPopup(editPofileForm);
+
+  openPopup(`[(name = "popupEditProfile")]`);
 }
 
 function addMesto() {
-  openPopup(addMestoForm);
+  openPopup(`[name="viewMestoImage"]`);
 }
 
 function handleFormProfileSubmit(evt) {
@@ -82,7 +83,16 @@ const cardList = new Section(
   {
     items: initialCards,
     renderer: (cardItem) => {
-      const card = new Card(cardItem, cardTemplate);
+      const card = new Card(
+        { cardItem, 
+          handleCardClick: () => {}
+          //  (link, name) => {
+          //   const popup = new PopupWithImage(link, name);
+          //   //card.PopupWithImage(link, name);
+          // } 
+        },
+        cardTemplate
+      );
       const cardElement = card.generateCard();
       cardList.addItem(cardElement);
     },

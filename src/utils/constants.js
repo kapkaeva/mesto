@@ -43,13 +43,14 @@ export const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card");
 
+
 export const buttonEditProfile = document.querySelector(".profile__edit-btn");
 export const buttonAddMestoButton = document.querySelector(".profile__add-btn");
 export const closeButtons = document.querySelectorAll(".popup__close-btn");
 export const formEditProfile = document.querySelector('[name="editProfile"]');
 export const formAddMesto = document.querySelector('[name="addMesto"]');
-export const addMestoForm = document.querySelector('[name="popupAddMesto"]');
-export const editPofileForm = document.querySelector(
-  '[name="popupEditProfile"]'
-);
-export const viewMestoImage = document.querySelector('[name="viewMestoImage"]');
+// export const addMestoForm = document.querySelector('[name="popupAddMesto"]');
+// export const editPofileForm = document.querySelector(
+//   '[name="popupEditProfile"]'
+// );
+//export const viewMestoImage = document.querySelector('[name="viewMestoImage"]');

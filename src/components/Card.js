@@ -1,9 +1,10 @@
 import { handleOpenPopup } from "./popupHandlers.js";
 
 export default class Card {
-  constructor(data, cardElement) {
+  constructor({ data, handleCardClick }, cardElement) {
     this._name = data.name;
     this._link = data.link;
+    this._handleCardClick = handleCardClick;
     this._element = cardElement.cloneNode(true);
   }
 
@@ -31,7 +32,8 @@ export default class Card {
     this._element
       .querySelector(".card__image")
       .addEventListener("click", (evt) => {
-        handleOpenPopup(this._link, this._name);
+        this._handleCardClick(this._link, this._name);
+        //handleOpenPopup(this._link, this._name);
       });
   }
 
