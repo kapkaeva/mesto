@@ -1,22 +1,35 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
-  // наследуется от Popup, вызывает его конструктор,
-  // в который передает нужный параметр.
-  // При этом принимает еще и второй параметр - колбэк сабмита формы.
-  // Создаем два экземпляра этого класса, в каждый передаем свой
-  // коллебек (помимо селектора попапа).
-  // В одном случае форма редактирует данные пользователя на странице,
-  // во втором - добавляет новую карточку.
-  // В качестве идеи - попробуйте совместить функцию коллбека
-  // при сабмите формы добавления карточки с аргументом renderer у класса Section
-  constructor(popupSelector) {
+  constructor(popupSelector, { formSelector, handleFormSubmit }) {
     super(popupSelector);
-    //??? this._closeButton = document.querySelector(".popup__close-btn");
+    this._handleFormSubmit = handleFormSubmit;
+    this._form = document.querySelector(formSelector);
   }
 
-  open() {
-    const inputElement = this._element.querySelector("input");
-    if (inputElement) inputElement.focus();
+  _getInputValues() {
+    this._inputList = this._form.querySelectorAll(".popup__input");
+    this._formValues = {};
+    this._inputList.forEach((input) => {
+      this._formValues[input.name] = input.value;
+    });
+    return this._formValues;
+  }
+
+  _handleSubmit = (evt) => {
+    evt.preventDefault();
+    this._handleFormSubmit(this._getInputValues());
+    this.close();
+  };
+
+  setEventListeners() {
+    super.setEventListeners();
+    this._form.addEventListener("submit", this._handleSubmit);
+  }
+
+  close() {
+    super.close();
+    this._form.reset();
+    this._form.removeEventListener("submit", this._handleSubmit);
   }
 }

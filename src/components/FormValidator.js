@@ -69,16 +69,8 @@ export default class FormValidator {
     });
   }
 
-  _handleButton(evt) {
-    evt.preventDefault();
-  }
-
   enableValidation() {
     this._setButtonState(true);
-    this._formSelector.addEventListener("submit", (evt) => {
-      this._handleButton(evt);
-    });
-
     this._setEventListeners(this._formSelector, this._inactiveButtonClass);
   }
 }
