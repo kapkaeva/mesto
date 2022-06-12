@@ -1,8 +1,7 @@
 export default class Popup {
   constructor(popupSelector) {
     this._element = document.querySelector(popupSelector);
-    this._closeButton = document.querySelector(".popup__close-btn");
-    //this._closeButtons = document.querySelectorAll(".popup__close-btn");
+    this._closeButton = this._element.querySelector(".popup__close-btn");
   }
 
   open() {
@@ -11,40 +10,40 @@ export default class Popup {
   }
 
   close() {
-    const element = this._findActive();
-    if (element) {
-      element.classList.remove("popup_opened");
-      element.removeEventListener("click", () => {
-        this._handleOverlayClick;
-      });
-    }
+    this._element.classList.remove("popup_opened");
+    this._closeButton.removeEventListener("click", this._handleCloseBtn);
+    this._element.removeEventListener("click", this._handleOverlayClick);
+    document.removeEventListener("keydown", this._handleKeydown);
   }
-  
+
+  _handleCloseBtn = () => {
+    this.close();
+  };
+
+  _handleOverlayClick = (evt) => {
+    if (evt.target.classList.contains("overlay")) {
+      evt.stopPropagation();
+      this.close();
+    }
+  };
+
+  _handleKeydown = (evt) => {
+    if (evt.key === "Escape") {
+      this.close();
+    }
+  };
+
   setEventListeners() {
-    this._closeButton.addEventListener("click", (evt) => {
-      this.close();
-    });
-
-    this._element.addEventListener("click", (evt) => {
-      if (evt.target.classList.contains("overlay")) {
-        evt.stopPropagation();
-        this.close();
-      }
-    });
-
-    document.addEventListener("keydown", () => {
-      this.close();
-    });
+    this._closeButton.addEventListener("click", this._handleCloseBtn);
+    this._element.addEventListener("click", this._handleOverlayClick);
+    document.addEventListener("keydown", this._handleKeydown);
   }
 
   _handleOverlayClick(event) {
-    debugger;
     if (event.target.classList.contains("overlay")) {
       const element = this._findActive();
-      if (element) {
-        document.removeEventListener("keydown", handleOverlayEscPress);
-        element.classList.remove("popup_opened");
-      }
+      document.removeEventListener("keydown", handleOverlayEscPress);
+      this._element.classList.remove("popup_opened");
     }
   }
 
