@@ -33,7 +33,6 @@ export default class Card {
       .querySelector(".card__image")
       .addEventListener("click", (evt) => {
         this._handleCardClick(this._link, this._name);
-        //handleOpenPopup(this._link, this._name);
       });
   }
 

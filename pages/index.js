@@ -1,3 +1,4 @@
+import "../pages/index.css";
 import Section from "../src/components/Section.js";
 import Card from "../src/components/Card.js";
 import FormValidator from "../src/components/FormValidator.js";
@@ -18,7 +19,6 @@ import {
 
 const nameInput = document.querySelector(".popup__input-name");
 const jobInput = document.querySelector(".popup__input-description");
-
 const mestoGrid = document.querySelector(".mesto__grid");
 
 const userInfo = new UserInfo({

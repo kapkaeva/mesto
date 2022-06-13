@@ -13,7 +13,7 @@ export default class Popup {
     this._element.classList.remove("popup_opened");
     this._closeButton.removeEventListener("click", this._handleCloseBtn);
     this._element.removeEventListener("click", this._handleOverlayClick);
-    document.removeEventListener("keydown", this._handleKeydown);
+    document.removeEventListener("keydown", this.__handleEscClose);
   }
 
   _handleCloseBtn = () => {
@@ -27,7 +27,7 @@ export default class Popup {
     }
   };
 
-  _handleKeydown = (evt) => {
+  __handleEscClose = (evt) => {
     if (evt.key === "Escape") {
       this.close();
     }
@@ -36,18 +36,7 @@ export default class Popup {
   setEventListeners() {
     this._closeButton.addEventListener("click", this._handleCloseBtn);
     this._element.addEventListener("click", this._handleOverlayClick);
-    document.addEventListener("keydown", this._handleKeydown);
+    document.addEventListener("keydown", this.__handleEscClose);
   }
 
-  _handleOverlayClick(event) {
-    if (event.target.classList.contains("overlay")) {
-      const element = this._findActive();
-      document.removeEventListener("keydown", handleOverlayEscPress);
-      this._element.classList.remove("popup_opened");
-    }
-  }
-
-  _findActive() {
-    return document.querySelector(".popup_opened");
-  }
 }
