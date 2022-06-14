@@ -45,6 +45,9 @@ const profilePopupForm = new PopupWithForm(`[name = "popupEditProfile"]`, {
     userData.setUserInfo(formData.profileName, formData.description);
     editProfileValidator.disableActionBtn();
   },
+  closeCallback: () => {
+    editProfileValidator.hideInputErrors();
+  },
 });
 
 function editProfileInfo() {
@@ -58,7 +61,7 @@ function generateCard(cardItem) {
     {
       data: cardItem,
       handleCardClick: (link, name) => {
-        new PopupWithImage(`[name="viewMestoImage"]`, link, name).open();
+        new PopupWithImage(`[name="viewMestoImage"]`).open(link, name);
       },
     },
     cardTemplate
@@ -85,6 +88,10 @@ const addMestoPopupForm = new PopupWithForm(`[name = "popupAddMesto"]`, {
       link: formData.mestoLink,
     });
     cardList.addItem(card);
+    addMestoValidator.disableActionBtn();
+  },
+  closeCallback: () => {
+    addMestoValidator.hideInputErrors();
   },
 });
 

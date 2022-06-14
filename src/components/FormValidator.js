@@ -9,6 +9,9 @@ export default class FormValidator {
     this._buttonElement = this._formSelector.querySelector(
       this._submitButtonSelector
     );
+    this._inputList = Array.from(
+      this._formSelector.querySelectorAll(this._inputSelector)
+    );
   }
 
   _enableActionBtn() {
@@ -21,18 +24,21 @@ export default class FormValidator {
     this._buttonElement.classList.add(this._inactiveButtonClass);
   }
 
+  hideInputErrors() {
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
+  }
+
   _setButtonState(disabled) {
     disabled ? this.disableActionBtn() : this._enableActionBtn();
   }
 
   _setEventListeners() {
-    const inputList = Array.from(
-      this._formSelector.querySelectorAll(this._inputSelector)
-    );
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
-        this._setButtonState(this._hasInvalidInput(inputList));
+        this._setButtonState(this._hasInvalidInput(this._inputList));
       });
     });
   }

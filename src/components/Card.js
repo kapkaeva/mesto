@@ -6,13 +6,15 @@ export default class Card {
     this._link = data.link;
     this._handleCardClick = handleCardClick;
     this._element = cardElement.cloneNode(true);
+    this._image = this._element.querySelector(".card__image");
+    this._title = this._element.querySelector(".card__title");
   }
 
   generateCard() {
     this._setEventListeners();
-    this._element.querySelector(".card__image").src = this._link;
-    this._element.querySelector(".card__image").alt = this._name;
-    this._element.querySelector(".card__title").textContent = this._name;
+    this._image.src = this._link;
+    this._image.alt = this._name;
+    this._title.textContent = this._name;
     return this._element;
   }
 
@@ -29,11 +31,9 @@ export default class Card {
         this._handleDelete();
       });
 
-    this._element
-      .querySelector(".card__image")
-      .addEventListener("click", (evt) => {
-        this._handleCardClick(this._link, this._name);
-      });
+    this._image.addEventListener("click", (evt) => {
+      this._handleCardClick(this._link, this._name);
+    });
   }
 
   _handleToggleLike() {
