@@ -4,10 +4,12 @@ export default class Card {
   constructor({ data, handleCardClick }, cardElement) {
     this._name = data.name;
     this._link = data.link;
+    this._likeCounter = data.likes.length;
     this._handleCardClick = handleCardClick;
     this._element = cardElement.cloneNode(true);
     this._image = this._element.querySelector(".card__image");
     this._title = this._element.querySelector(".card__title");
+    this._likes = this._element.querySelector(".card__like-counter");
   }
 
   generateCard() {
@@ -15,6 +17,7 @@ export default class Card {
     this._image.src = this._link;
     this._image.alt = this._name;
     this._title.textContent = this._name;
+    this._likes.textContent = this._likeCounter;
     return this._element;
   }
 
