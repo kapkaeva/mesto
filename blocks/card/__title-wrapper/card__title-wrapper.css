@@ -1,8 +1,8 @@
 .card__title-wrapper {
   display: flex;
   flex-flow: row;
-  justify-content: space-between;
   align-items: center;
-  margin: 25px 15px 31px 21px;
+  justify-content: space-between;
+  /* margin: 25px 15px 31px 21px; */
   background-color: white;
 }

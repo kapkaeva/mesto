@@ -1,0 +1,18 @@
+.profile__avatar-edit-btn {
+  /* width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden; */
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  /* background-size: 120px; */
+}
+
+@media screen and (min-width: 800px) {
+  .profile__avatar-edit-btn {
+    margin: 0 30px 0 0;
+    float: left;
+  }
+}

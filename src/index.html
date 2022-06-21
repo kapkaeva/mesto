@@ -14,11 +14,17 @@
 
       <main class="content">
         <section class="profile">
-          <img
-            class="profile__avatar"
-            src="<%=require('../images/author.jpg')%>"
-            alt="Картинка профиля"
-          />
+          <button class="profile__avatar-edit-btn">
+            <div class="profile__avatar">
+              <!-- src="<%=require('../images/author.jpg')%>"
+              alt="Картинка профиля" -- -->
+            </div>
+            <!-- <img
+              class="profile__avatar_hover"
+              src="<%=require('../images/icons/icon-edit.svg')%>"
+              alt="Картинка профиля"
+            /> -->
+          </button>
 
           <div class="profile__info">
             <div class="profile__name">
@@ -43,6 +49,7 @@
       <footer class="footer">
         <p class="footer__copyright">© 2021 Mesto Russia</p>
       </footer>
+
       <div class="popup overlay" name="popupEditProfile">
         <div class="popup__container popup__container_bg">
           <button class="popup__close-btn" type="button"></button>
@@ -134,7 +141,48 @@
           <p class="popup__img-title"></p>
         </div>
       </div>
+
+            <div class="popup overlay" name="popupUpdateAvatar">
+        <div class="popup__container popup__container_bg">
+          <button class="popup__close-btn" type="button"></button>
+          <h3 class="popup__header">Обновить аватар</h3>
+          <form class="popup__form" name="updateAvatar" novalidate>
+            <fieldset class="popup__form-set">
+              <label class="popup__form-field">
+                <input
+                  id="avatar-input"
+                  type="text"
+                  name="avatarLink"
+                  placeholder="Ссылка на картинку"
+                  class="popup__input popup__input-name"
+                  minlength="2"
+                  maxlength="40"
+                  required
+                />
+                <span class="popup__error avatar-input-error"></span>
+              </label>
+              <input
+                value="Сохранить"
+                class="popup__button popup__button_disabled"
+                type="submit"
+                disabled
+              />
+            </fieldset>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup overlay" name="popupConfirm">
+          <div class="popup__container popup__container_bg">
+            <button class="popup__close-btn" type="button"></button>
+            <h3 class="popup__header">Вы уверены?</h3>
+            <button class="popup__button">Да</button>
+          </div>
+      </div>
+
     </div>
+
+
 
     <template id="card-template">
       <li class="card">
@@ -142,7 +190,10 @@
         <button class="card__delete-button" type="button"></button>
         <div class="card__title-wrapper">
           <h2 class="card__title"></h2>
-          <button class="card__like-button" type="button"></button>
+          <div class="card__like-wrapper">
+            <button class="card__like-button" type="button"></button>
+            <p class="card__like-counter">#</p>
+          </div>
         </div>
       </li>
     </template>

@@ -4,8 +4,9 @@
   background: url(../../../images/icons/icon-heart.svg) center no-repeat;
   background-size: 100%;
   cursor: pointer;
-  height: 22px;
-  width: 23px;
+  height: 19px;
+  width: 22px;
+  padding: 0;
   transition: 0.3s;
 }
 
