@@ -9,18 +9,17 @@
   background-position: center;
   overflow: hidden;
   box-sizing: border-box;
-  background: url("../../../images/author.jpg") center no-repeat;
+  background: url("../../../images/author.jpg") round no-repeat;
 }
 
-/* @media screen and (min-width: 800px) {
-  .profile__avatar {
-    margin: 0 30px 0 0;
-    float: left;
-  }
-} */
+.profile__avatar_wrapper {
+  height: 100%;
+  background-color: #0000008a;
+  display: none;
+  justify-content: center;
+}
 
-.profile__avatar:hover {
-  background: url("../../../images/icons/icon-edit.svg") center no-repeat;
-  background-color: rgba(0, 0, 0, .8);
-  opacity: 0.8;
+.profile__avatar_edit_img {
+    margin: auto;
+    display: block;
 }

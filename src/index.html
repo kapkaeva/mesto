@@ -16,14 +16,16 @@
         <section class="profile">
           <button class="profile__avatar-edit-btn">
             <div class="profile__avatar">
-              <!-- src="<%=require('../images/author.jpg')%>"
-              alt="Картинка профиля" -- -->
+              <div class="profile__avatar_wrapper">
+                <img
+                  class="profile__avatar_edit_img"
+                  src="<%=require('../images/icons/icon-edit.svg')%>"
+                  alt="Картинка профиля"
+                  decoding="async"
+                  loading="auto"
+                />
+              </div>
             </div>
-            <!-- <img
-              class="profile__avatar_hover"
-              src="<%=require('../images/icons/icon-edit.svg')%>"
-              alt="Картинка профиля"
-            /> -->
           </button>
 
           <div class="profile__info">
@@ -31,7 +33,7 @@
               <h1 class="profile__heading">А</h1>
               <button class="profile__edit-btn" type="button"></button>
             </div>
-            <p class="profile__description">Ф</p>
+            <p class="profile__description"></p>
           </div>
 
           <button class="profile__add-btn" type="button"></button>
@@ -137,7 +139,13 @@
       <div class="popup overlay" name="viewMestoImage">
         <div class="popup__container">
           <button class="popup__close-btn" type="button"></button>
-          <img class="popup__image" src="https://" alt="text" />
+          <img
+            class="popup__image"
+            src="https://"
+            alt="text"
+            loading="auto"
+            decoding="async"
+          />
           <p class="popup__img-title"></p>
         </div>
       </div>
@@ -151,12 +159,11 @@
               <label class="popup__form-field">
                 <input
                   id="avatar-input"
-                  type="text"
+                  type="url"
                   name="avatarLink"
                   placeholder="Ссылка на картинку"
                   class="popup__input popup__input-name"
                   minlength="2"
-                  maxlength="40"
                   required
                 />
                 <span class="popup__error avatar-input-error"></span>
@@ -183,7 +190,13 @@
 
     <template id="card-template">
       <li class="card">
-        <img class="card__image" src="https://" alt="text" />
+        <img
+          class="card__image"
+          src="https://"
+          alt="text"
+          decoding="async"
+          loading="auto"
+        />
         <button class="card__delete-button" type="button"></button>
         <div class="card__title-wrapper">
           <h2 class="card__title"></h2>

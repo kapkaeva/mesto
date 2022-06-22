@@ -71,10 +71,15 @@ export const cardTemplate = document
 
 export const buttonEditProfile = document.querySelector(".profile__edit-btn");
 export const buttonAddMestoButton = document.querySelector(".profile__add-btn");
+export const buttonEditAvatar = document.querySelector(
+  ".profile__avatar-edit-btn"
+);
 export const closeButtons = document.querySelectorAll(".popup__close-btn");
 export const formEditProfile = document.querySelector('[name="editProfile"]');
 export const formAddMesto = document.querySelector('[name="addMesto"]');
+export const formAvatar = document.querySelector('[name="updateAvatar"]');
 export const baseUrl = "https://mesto.nomoreparties.co/v1";
 export const groupUrl = "/cohort-43";
 export const cardsUrl = groupUrl + "/cards";
 export const userUrl = groupUrl + "/users/me";
+export const userId = "34d8c93af626c6eb723bd645";

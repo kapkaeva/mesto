@@ -5,19 +5,23 @@ export default class UserInfo {
     this._elementImage = document.querySelector(elementImage);
   }
 
-  // getUserInfo() {
-  //   const name = this._elementName.textContent;
-  //   const description = this._elementAboutInfo.textContent;
-  //   const avatar = this._elementImage.style.backgroundImage;
-  //   return { name, description, avatar};
-  // }
+  getUserInfo() {
+    const name = this._elementName.textContent;
+    const description = this._elementAboutInfo.textContent;
+    const avatar = this._elementImage.style.backgroundImage;
+    return { name, description, avatar };
+  }
 
   setUserInfo(name, description, avatar) {
-    console.log(name);
-    console.log(description, avatar);
     this._elementName.textContent = name;
     this._elementAboutInfo.textContent = description;
-    debugger;
-    //this._elementImage.style.background = "url(" + avatar + ")";
+    if (avatar) {
+      this.setAvatar(avatar);
+    }
+  }
+
+  setAvatar(avatarUrl) {
+    this._elementImage.style.background =
+      "url(" + avatarUrl + ") round no-repeat";
   }
 }
