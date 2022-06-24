@@ -22,6 +22,6 @@ export default class UserInfo {
 
   setAvatar(avatarUrl) {
     this._elementImage.style.background =
-      "url(" + avatarUrl + ") round no-repeat";
+      "url(" + avatarUrl + ") round";
   }
 }

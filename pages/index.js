@@ -127,7 +127,7 @@ function generateCard(cardItem) {
         }).open();
       },
       handleLikeClick: (cardId, isLikeActive) => {
-        var likePromise;
+        let likePromise;
         if (isLikeActive) {
           likePromise = api.removeLike(cardId);
         } else {
