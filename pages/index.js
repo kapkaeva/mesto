@@ -39,9 +39,10 @@ const userInfo = new UserInfo({
   elementImage: userConfig.profileImage,
 });
 
-api.getUserInfo().then((info) => {
-  userInfo.setUserInfo(info.name, info.about, info.avatar);
-});
+api
+  .getUserInfo()
+  .then((info) => userInfo.setUserInfo(info.name, info.about, info.avatar))
+  .catch((err) => console.log(err));
 
 const editProfileValidator = new FormValidator(
   validationConfig,
@@ -68,9 +69,8 @@ const avatarPopupForm = new PopupWithForm(`[name = "popupUpdateAvatar"]`, {
         }
       })
       .then((data) => userInfo.setAvatar(data.avatar))
-      .then(() => {
-        avatarFormValidator.disableActionBtn();
-      });
+      .then(() => avatarFormValidator.disableActionBtn())
+      .catch((err) => console.log(err));
   },
   closeCallback: () => {
     avatarFormValidator.hideInputErrors();
@@ -89,9 +89,8 @@ const profilePopupForm = new PopupWithForm(`[name = "popupEditProfile"]`, {
           Promise.reject(`Ошибка: ${res.status}`);
         }
       })
-      .then(() => {
-        editProfileValidator.disableActionBtn();
-      });
+      .then(() => editProfileValidator.disableActionBtn())
+      .catch((err) => console.log(err));
   },
   closeCallback: () => {
     editProfileValidator.hideInputErrors();
@@ -122,7 +121,8 @@ function generateCard(cardItem) {
                   Promise.reject(`Ошибка: ${res.status}`);
                 }
               })
-              .then(() => card.remove());
+              .then(() => card.remove())
+              .catch((err) => console.log(err));
           },
         }).open();
       },
@@ -133,13 +133,15 @@ function generateCard(cardItem) {
         } else {
           likePromise = api.addLike(cardId);
         }
-        return likePromise.then((res) => {
-          if (res.ok) {
-            return res.json();
-          } else {
-            Promise.reject(`Ошибка: ${res.status}`);
-          }
-        });
+        return likePromise
+          .then((res) => {
+            if (res.ok) {
+              return res.json();
+            } else {
+              Promise.reject(`Ошибка: ${res.status}`);
+            }
+          })
+          .catch((err) => console.log(err));
       },
     },
     cardTemplate
@@ -156,9 +158,10 @@ const cardList = new Section(
   mestoGrid
 );
 
-api.getInitialCards().then((cards) => {
-  cardList.renderItems(cards);
-});
+api
+  .getInitialCards()
+  .then((cards) => cardList.renderItems(cards))
+  .catch((err) => console.log(err));
 
 const addMestoPopupForm = new PopupWithForm(`[name = "popupAddMesto"]`, {
   formSelector: '[name="addMesto"]',
@@ -175,14 +178,13 @@ const addMestoPopupForm = new PopupWithForm(`[name = "popupAddMesto"]`, {
           Promise.reject(`Ошибка: ${res.status}`);
         }
       })
-      .then((data) =>
+      .then((data) => {
         cardList.addItem(
-          generateCard({ id: data._id, name: data.name, link: data.link })
-        )
-      )
-      .then(() => {
-        addMestoValidator.disableActionBtn();
-      });
+          generateCard({ _id: data._id, name: data.name, link: data.link })
+        );
+      })
+      .then(() => addMestoValidator.disableActionBtn())
+      .catch((err) => console.log(err));
   },
   closeCallback: () => {
     addMestoValidator.hideInputErrors();
