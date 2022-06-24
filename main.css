@@ -7,7 +7,9 @@
 .hidden{display:none;visibility:hidden}
 .profile{box-sizing:border-box;color:#fff;margin:36px auto;overflow:hidden;width:100%}@media screen and (min-width:320px) and (max-width:800px){.profile{padding-left:19px;padding-right:19px}}@media screen and (min-width:800px){.profile{max-width:880px;padding-left:19px;padding-right:19px}}
 .profile__columns{display:flex;margin-left:auto;margin-right:auto;width:100%}@media screen and (max-width:320px){.profile__columns{display:block}}
-.profile__avatar{background-position:50%;background-size:cover;background:url(75b7cf88fe701e0eb6ae.jpg) round no-repeat;border-radius:50%;box-sizing:border-box;display:block;height:120px;margin-left:auto;margin-right:auto;overflow:hidden;width:120px}.profile__avatar_wrapper{background-color:#0000008a;display:none;height:100%;justify-content:center}.profile__avatar_edit_img{display:block;margin:auto}
+.profile__avatar{background-position:50%;background-size:cover;background:url(75b7cf88fe701e0eb6ae.jpg) round no-repeat;border-radius:50%;box-sizing:border-box;display:block;height:120px;margin-left:auto;margin-right:auto;overflow:hidden;width:120px}
+.profile__avatar-wrapper{background-color:#0000008a;display:none;height:100%;justify-content:center}
+.profile__avatar-edit-img{display:block;margin:auto}
 .profile__avatar-edit-btn{background:transparent;border:none;cursor:pointer;outline:0;padding:0}.profile__avatar-edit-btn:hover .profile__avatar_wrapper{display:flex}@media screen and (min-width:800px){.profile__avatar-edit-btn{float:left;margin:0 30px 0 0}}
 .profile__avatar_hover{display:inline-block}
 .profile__name{align-items:center;display:flex;flex-flow:row;margin:auto}@media screen and (max-width:800px){.profile__name{justify-content:center;margin:22px auto 0}}
