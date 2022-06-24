@@ -11,15 +11,3 @@
   box-sizing: border-box;
   background: url("../../../images/author.jpg") round no-repeat;
 }
-
-.profile__avatar_wrapper {
-  height: 100%;
-  background-color: #0000008a;
-  display: none;
-  justify-content: center;
-}
-
-.profile__avatar_edit_img {
-    margin: auto;
-    display: block;
-}
