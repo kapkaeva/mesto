@@ -56,21 +56,25 @@ addMestoValidator.enableValidation();
 const avatarFormValidator = new FormValidator(validationConfig, formAvatar);
 avatarFormValidator.enableValidation();
 
+const popupWithButton = new PopupWithButton(`[name = "popupConfirm"]`, {
+  buttonSelector: ".popup__button",
+});
+
+const popupWithImage = new PopupWithImage(`[name="viewMestoImage"]`);
+
 const avatarPopupForm = new PopupWithForm(`[name = "popupUpdateAvatar"]`, {
   formSelector: '[name="updateAvatar"]',
-  handleFormSubmit: (formData) => {
+  handleFormSubmit: (formData, popup) => {
+    popup.renderLoading();
     return api
       .updateAvatar(formData.avatarLink)
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          Promise.reject(`Ошибка: ${res.status}`);
-        }
+      .then((data) => {
+        userInfo.setAvatar(data.avatar);
+        avatarFormValidator.disableActionBtn();
+        popup.close();
       })
-      .then((data) => userInfo.setAvatar(data.avatar))
-      .then(() => avatarFormValidator.disableActionBtn())
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => popup.renderLoading());
   },
   closeCallback: () => {
     avatarFormValidator.hideInputErrors();
@@ -79,18 +83,14 @@ const avatarPopupForm = new PopupWithForm(`[name = "popupUpdateAvatar"]`, {
 
 const profilePopupForm = new PopupWithForm(`[name = "popupEditProfile"]`, {
   formSelector: '[name="editProfile"]',
-  handleFormSubmit: (formData) => {
+  handleFormSubmit: (formData, popup) => {
     return api
       .updateUserInfo(formData.profileName, formData.description)
       .then((res) => {
-        if (res.ok) {
-          userInfo.setUserInfo(formData.profileName, formData.description);
-        } else {
-          Promise.reject(`Ошибка: ${res.status}`);
-        }
-      })
-      .then(() => editProfileValidator.disableActionBtn())
-      .catch((err) => console.log(err));
+        userInfo.setUserInfo(formData.profileName, formData.description);
+        editProfileValidator.disableActionBtn();
+        popup.close();
+      });
   },
   closeCallback: () => {
     editProfileValidator.hideInputErrors();
@@ -108,23 +108,20 @@ function generateCard(cardItem) {
     {
       data: cardItem,
       handleCardClick: (link, name) => {
-        new PopupWithImage(`[name="viewMestoImage"]`).open(link, name);
+        popupWithImage.open(link, name);
       },
       handleRemove: (card) => {
-        new PopupWithButton(`[name = "popupConfirm"]`, {
-          buttonSelector: ".popup__button",
-          handleButtonClick: () => {
+        popupWithButton
+          .setHandleButtonClick((popup) => {
             api
               .deleteCard(card.id)
-              .then((res) => {
-                if (!res.ok) {
-                  Promise.reject(`Ошибка: ${res.status}`);
-                }
+              .then(() => {
+                card.remove();
+                popup.close();
               })
-              .then(() => card.remove())
               .catch((err) => console.log(err));
-          },
-        }).open();
+          })
+          .open();
       },
       handleLikeClick: (cardId, isLikeActive) => {
         let likePromise;
@@ -133,15 +130,7 @@ function generateCard(cardItem) {
         } else {
           likePromise = api.addLike(cardId);
         }
-        return likePromise
-          .then((res) => {
-            if (res.ok) {
-              return res.json();
-            } else {
-              Promise.reject(`Ошибка: ${res.status}`);
-            }
-          })
-          .catch((err) => console.log(err));
+        return likePromise.catch((err) => console.log(err));
       },
     },
     cardTemplate
@@ -165,26 +154,17 @@ api
 
 const addMestoPopupForm = new PopupWithForm(`[name = "popupAddMesto"]`, {
   formSelector: '[name="addMesto"]',
-  handleFormSubmit: (formData) => {
+  handleFormSubmit: (formData, popup) => {
     return api
       .createCard({
         name: formData.mestoTitle,
         link: formData.mestoLink,
       })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          Promise.reject(`Ошибка: ${res.status}`);
-        }
-      })
       .then((data) => {
-        cardList.addItem(
-          generateCard({ _id: data._id, name: data.name, link: data.link })
-        );
-      })
-      .then(() => addMestoValidator.disableActionBtn())
-      .catch((err) => console.log(err));
+        cardList.addItem(generateCard(data));
+        addMestoValidator.disableActionBtn();
+        popup.close();
+      });
   },
   closeCallback: () => {
     addMestoValidator.hideInputErrors();

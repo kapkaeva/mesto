@@ -9,6 +9,7 @@ export default class Card {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
+    this._ownerId = data.owner._id;
     this._likeCounter = data.likes ? data.likes.length : 0;
     this._handleCardClick = handleCardClick;
     this._handleRemove = handleRemove;
@@ -18,6 +19,7 @@ export default class Card {
     this._title = this._element.querySelector(".card__title");
     this._likesCounter = this._element.querySelector(".card__like-counter");
     this._likeBtn = this._element.querySelector(".card__like-button");
+    this._removeBtn = this._element.querySelector(".card__delete-button");
   }
 
   generateCard() {
@@ -28,6 +30,10 @@ export default class Card {
     this._likesCounter.textContent = this._likeCounter;
     if (this._liked()) {
       this._likeBtn.classList.add("card__like-button_active");
+    }
+
+    if (this._ownerId == userId) {
+      this._removeBtn.classList.add("card__delete-button_active");
     }
 
     return this._element;

@@ -7,23 +7,13 @@ export default class Api {
 
   getInitialCards() {
     return fetch(this.baseUrl + cardsUrl, { headers: this.headers }).then(
-      (res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
+      (res) => this._responseHandler(res)
     );
   }
 
   getUserInfo() {
     return fetch(this.baseUrl + userUrl, { headers: this.headers }).then(
-      (res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
+      (res) => this._responseHandler(res)
     );
   }
 
@@ -35,7 +25,7 @@ export default class Api {
         name: name,
         about: about,
       }),
-    });
+    }).then((res) => this._okResponseHandler(res));
   }
 
   createCard({ name, link }) {
@@ -46,28 +36,28 @@ export default class Api {
         name: name,
         link: link,
       }),
-    });
+    }).then((res) => this._responseHandler(res));
   }
 
   deleteCard(cardId) {
     return fetch(this.baseUrl + cardsUrl + "/" + cardId, {
       method: "DELETE",
       headers: this.headers,
-    });
+    }).then((res) => this._okResponseHandler(res));
   }
 
   addLike(cardId) {
     return fetch(this.baseUrl + cardsUrl + "/" + cardId + "/likes", {
       method: "PUT",
       headers: this.headers,
-    });
+    }).then((res) => this._responseHandler(res));
   }
 
   removeLike(cardId) {
     return fetch(this.baseUrl + cardsUrl + "/" + cardId + "/likes", {
       method: "DELETE",
       headers: this.headers,
-    });
+    }).then((res) => this._responseHandler(res));
   }
 
   updateAvatar(avatarUrl) {
@@ -77,6 +67,18 @@ export default class Api {
       body: JSON.stringify({
         avatar: avatarUrl,
       }),
-    });
+    }).then((res) => this._responseHandler(res));
+  }
+
+  _responseHandler(res) {
+    return this._okResponseHandler(res).json();
+  }
+
+  _okResponseHandler(res) {
+    if (res.ok) {
+      return res;
+    } else {
+      return Promise.reject(`Ошибка: ${res.status}`);
+    }
   }
 }

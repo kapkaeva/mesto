@@ -6,7 +6,7 @@
   height: 19px;
   width: 19px;
   cursor: pointer;
-  display: block;
+  display: none;
   float: right;
   position: absolute;
   top: 18px;
