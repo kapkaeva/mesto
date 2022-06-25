@@ -160,7 +160,7 @@ const cardList = new Section(
 
 api
   .getInitialCards()
-  .then((cards) => cardList.renderItems(cards))
+  .then((cards) => cardList.renderItems(cards.reverse()))
   .catch((err) => console.log(err));
 
 const addMestoPopupForm = new PopupWithForm(`[name = "popupAddMesto"]`, {

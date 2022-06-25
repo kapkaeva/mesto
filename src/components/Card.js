@@ -1,3 +1,5 @@
+import { userId } from "../utils/constants";
+
 export default class Card {
   constructor(
     { data, handleCardClick, handleRemove, handleLikeClick },
@@ -6,6 +8,7 @@ export default class Card {
     this.id = data._id;
     this._name = data.name;
     this._link = data.link;
+    this._likes = data.likes;
     this._likeCounter = data.likes ? data.likes.length : 0;
     this._handleCardClick = handleCardClick;
     this._handleRemove = handleRemove;
@@ -13,7 +16,7 @@ export default class Card {
     this._element = cardElement.cloneNode(true);
     this._image = this._element.querySelector(".card__image");
     this._title = this._element.querySelector(".card__title");
-    this._likes = this._element.querySelector(".card__like-counter");
+    this._likesCounter = this._element.querySelector(".card__like-counter");
     this._likeBtn = this._element.querySelector(".card__like-button");
   }
 
@@ -22,7 +25,11 @@ export default class Card {
     this._image.src = this._link;
     this._image.alt = this._name;
     this._title.textContent = this._name;
-    this._likes.textContent = this._likeCounter;
+    this._likesCounter.textContent = this._likeCounter;
+    if (this._liked()) {
+      this._likeBtn.classList.add("card__like-button_active");
+    }
+
     return this._element;
   }
 
@@ -31,10 +38,17 @@ export default class Card {
     this._element = null;
   }
 
+  _liked() {
+    if (this._likeCounter == 0) {
+      return false;
+    }
+    return this._likes.find((like) => like._id === userId) !== undefined;
+  }
+
   _setEventListeners() {
     this._likeBtn.addEventListener("click", () => {
       this._handleLikeClick(this.id, this._isLikeActive()).then((data) => {
-        this._likes.textContent = data.likes.length;
+        this._likesCounter.textContent = data.likes.length;
       });
       this._handleToggleLike();
     });
