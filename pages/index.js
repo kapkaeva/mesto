@@ -39,11 +39,6 @@ const userInfo = new UserInfo({
   elementImage: userConfig.profileImage,
 });
 
-api
-  .getUserInfo()
-  .then((info) => userInfo.setUserInfo(info.name, info.about, info.avatar))
-  .catch((err) => console.log(err));
-
 const editProfileValidator = new FormValidator(
   validationConfig,
   formEditProfile
@@ -86,11 +81,12 @@ const profilePopupForm = new PopupWithForm(`[name = "popupEditProfile"]`, {
   handleFormSubmit: (formData, popup) => {
     return api
       .updateUserInfo(formData.profileName, formData.description)
-      .then((res) => {
-        userInfo.setUserInfo(formData.profileName, formData.description);
+      .then((userData) => {
+        userInfo.setUserInfo(userData);
         editProfileValidator.disableActionBtn();
         popup.close();
-      });
+      })
+      .catch((err) => console.log(err));
   },
   closeCallback: () => {
     editProfileValidator.hideInputErrors();
@@ -103,25 +99,25 @@ function editProfileInfo() {
   profilePopupForm.open();
 }
 
-function generateCard(cardItem) {
+function generateCard(cardItem, viewerId) {
   return new Card(
     {
       data: cardItem,
+      viewerId: viewerId,
       handleCardClick: (link, name) => {
         popupWithImage.open(link, name);
       },
       handleRemove: (card) => {
-        popupWithButton
-          .setHandleButtonClick((popup) => {
-            api
-              .deleteCard(card.id)
-              .then(() => {
-                card.remove();
-                popup.close();
-              })
-              .catch((err) => console.log(err));
-          })
-          .open();
+        popupWithButton.setHandleButtonClick((popup) => {
+          api
+            .deleteCard(card.id)
+            .then(() => {
+              card.remove();
+              popup.close();
+            })
+            .catch((err) => console.log(err));
+        });
+        popupWithButton.open();
       },
       handleLikeClick: (cardId, isLikeActive) => {
         let likePromise;
@@ -139,18 +135,27 @@ function generateCard(cardItem) {
 
 const cardList = new Section(
   {
-    renderer: (cardItem) => {
-      const card = generateCard(cardItem);
+    renderer: (cardItem, viewverId) => {
+      const card = generateCard(cardItem, viewverId);
       cardList.addItem(card);
     },
   },
   mestoGrid
 );
 
-api
-  .getInitialCards()
-  .then((cards) => cardList.renderItems(cards.reverse()))
+const getUserInfoPromise = api
+  .getUserInfo()
+  .then((info) => userInfo.setUserInfo(info))
   .catch((err) => console.log(err));
+
+const getInitialCardsPromise = api
+  .getInitialCards()
+  .catch((err) => console.log(err));
+
+Promise.all([getUserInfoPromise, getInitialCardsPromise]).then((values) => {
+  const cards = values[1];
+  cardList.renderItems(cards.reverse(), userInfo.getUserId());
+});
 
 const addMestoPopupForm = new PopupWithForm(`[name = "popupAddMesto"]`, {
   formSelector: '[name="addMesto"]',
@@ -161,10 +166,11 @@ const addMestoPopupForm = new PopupWithForm(`[name = "popupAddMesto"]`, {
         link: formData.mestoLink,
       })
       .then((data) => {
-        cardList.addItem(generateCard(data));
+        cardList.addItem(generateCard(data, userInfo.getUserId()));
         addMestoValidator.disableActionBtn();
         popup.close();
-      });
+      })
+      .catch((err) => console.log(err));
   },
   closeCallback: () => {
     addMestoValidator.hideInputErrors();

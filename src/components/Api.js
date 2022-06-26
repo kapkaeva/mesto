@@ -25,7 +25,7 @@ export default class Api {
         name: name,
         about: about,
       }),
-    }).then((res) => this._okResponseHandler(res));
+    }).then((res) => this._responseHandler(res));
   }
 
   createCard({ name, link }) {
@@ -43,7 +43,7 @@ export default class Api {
     return fetch(this.baseUrl + cardsUrl + "/" + cardId, {
       method: "DELETE",
       headers: this.headers,
-    }).then((res) => this._okResponseHandler(res));
+    }).then((res) => this._responseHandler(res));
   }
 
   addLike(cardId) {
@@ -71,12 +71,8 @@ export default class Api {
   }
 
   _responseHandler(res) {
-    return this._okResponseHandler(res).json();
-  }
-
-  _okResponseHandler(res) {
     if (res.ok) {
-      return res;
+      return res.json();
     } else {
       return Promise.reject(`Ошибка: ${res.status}`);
     }

@@ -1,8 +1,6 @@
-import { userId } from "../utils/constants";
-
 export default class Card {
   constructor(
-    { data, handleCardClick, handleRemove, handleLikeClick },
+    { data, viewerId, handleCardClick, handleRemove, handleLikeClick },
     cardElement
   ) {
     this.id = data._id;
@@ -11,6 +9,7 @@ export default class Card {
     this._likes = data.likes;
     this._ownerId = data.owner._id;
     this._likeCounter = data.likes ? data.likes.length : 0;
+    this._viewerId = viewerId;
     this._handleCardClick = handleCardClick;
     this._handleRemove = handleRemove;
     this._handleLikeClick = handleLikeClick;
@@ -32,7 +31,7 @@ export default class Card {
       this._likeBtn.classList.add("card__like-button_active");
     }
 
-    if (this._ownerId == userId) {
+    if (this._ownerId === this._viewerId) {
       this._removeBtn.classList.add("card__delete-button_active");
     }
 
@@ -45,10 +44,12 @@ export default class Card {
   }
 
   _liked() {
-    if (this._likeCounter == 0) {
+    if (this._likeCounter === 0) {
       return false;
     }
-    return this._likes.find((like) => like._id === userId) !== undefined;
+    return (
+      this._likes.find((like) => like._id === this._viewerId) !== undefined
+    );
   }
 
   _setEventListeners() {

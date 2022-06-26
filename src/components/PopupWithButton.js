@@ -13,7 +13,6 @@ export default class PopupWithButton extends Popup {
 
   setHandleButtonClick(handleButtonClick) {
     this._handleButtonClick = handleButtonClick;
-    return this;
   }
 
   setEventListeners() {

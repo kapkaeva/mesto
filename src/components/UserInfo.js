@@ -12,13 +12,18 @@ export default class UserInfo {
     return { name, description, avatar };
   }
 
-  setUserInfo(name, description, avatar) {
+  setUserInfo({ _id, name, about, avatar }) {
+    if (_id) this._id = _id;
     if (name) this._elementName.textContent = name;
-    if (description) this._elementAboutInfo.textContent = description;
+    if (about) this._elementAboutInfo.textContent = about;
     if (avatar) this.setAvatar(avatar);
   }
 
   setAvatar(avatarUrl) {
     this._elementImage.style.background = "url(" + avatarUrl + ") round";
+  }
+
+  getUserId() {
+    return this._id;
   }
 }
